@@ -12,7 +12,7 @@ drama, love, and lots of laughs!*
 - This application will track the statistics of each bachelor as they compete for love (number of dates, 
 number of roses received, etc.)
 - This application will show a leaderboard of the front runner bachelors. 
-- This application will allow users to create a "team" of bachelors and they can check on their team throughout 
+- This application will allow users to create a "crew" of bachelors and they can check on their team throughout 
 the season.
 
 **Who will use it?**
@@ -23,3 +23,12 @@ the Bachelor finale in 2021.
 - My guilty pleasure is watching the Bachelor/Bachelorette! I figure I should put my knowledge of the show to good use 
 in developing this application.
 - I think other viewers of the Bachelor/Bachelorette might actually use this application!
+
+## User Stories:
+
+- As a user, I want to be able to create and name my own crew of contestants and add it to the list of crews.
+- As a user, I want to be able to see my crew ranked amongst the list of other crews.
+- As a user, I want to be able to check the statistics of contestants on my crew.
+- As a user, I want to be able to view the biographies of each contestant. 
+- As a user, I want to be able to view the current status of all contestants (eliminated, eligible).
+- As a user, I want to be able to update the statistics of contestants.
