@@ -2,7 +2,7 @@
 
 ## A reality TV fantasy football application!
 
-*The Bachelorette is a reality tv dating show in which 25 eligible male bachelors compete to find love with a chosen 
+*The Bachelorette is a reality tv dating show in which 30 eligible male bachelors compete to find love with a chosen 
 bachelorette. Each week, the bachelorette goes on dates with the bachelors and eliminates those she does not have a 
 connection with through a rose ceremony. Men progressing to the next week of the show get a rose, men who do not get a rose are sent home. This 
 continues until two men remain, and the bachelorette accepts a marriage proposal from one of them. There is romance,
