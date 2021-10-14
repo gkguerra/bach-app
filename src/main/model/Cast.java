@@ -1,16 +1,16 @@
 package model;
 
-import model.Contestant;
 import java.util.ArrayList;
 
 public class Cast {
-    private String name; //This is the name of the team
+    private final String name; //This is the name of the team
     private final ArrayList<Contestant> cast; //The contestants in the cast
 
     public Cast(String castName) {
-        cast = new ArrayList<Contestant>();
+        cast = new ArrayList<>();
         name = castName;
     }
+
 
     // MODIFIES: this
     // EFFECTS: Contestant c is added to the Cast if they're not already in it

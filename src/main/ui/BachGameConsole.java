@@ -4,6 +4,8 @@ import model.Contestant;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// this console interface was written with help from the Teller project presented in class
+
 public class BachGameConsole {
     private final Scanner userInput;
     private final ArrayList<Contestant> cast;
