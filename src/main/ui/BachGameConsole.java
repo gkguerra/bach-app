@@ -1,49 +1,123 @@
 package ui;
 
 import model.Contestant;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BachGameConsole {
-    private Scanner scanner;
-    private ArrayList<Contestant> cast;
+    private final Scanner userInput;
+    private final ArrayList<Contestant> cast;
+    String selection = "";
+    Contestant c1 = new Contestant("Chad Smith", "Florida", "Chad grew up a wrestler.",
+            0, 0,0,0,0,"None","Eligible");
+    Contestant c2 = new Contestant("Jack Bob", "Atlanta",
+            "Jack is unemployed.",
+            0, 0,0,0,0,"None","Eligible");
+    Contestant c3 = new Contestant("Andrew Mah", "California",
+            "Andrew goes to the gym.",
+            0, 0,0,0,0,"None","Eligible");
 
     public BachGameConsole() {
         cast = new ArrayList<>();
-        scanner = new Scanner(System.in);
-        start();
+        userInput = new Scanner(System.in);
+        runBachGame();
     }
 
-    private void start() {
-        String selection = "";
-        int numContestantsCast = 0;
-
-        while (true) {
-            System.out.println("Hello, welcome to BachGames. Please select what you would like to do, "
-                    + "and enter the corresponding number into the console."
-                    + "1. View contestants" + "2. View your team" + "3. Quit");
-            selection = scanner.nextLine();
-            System.out.println("You selected:" + selection);
-
+    private void runBachGame() {
+        boolean control = true;
+        while (control) {
+            displayHome();
+            selection = userInput.next();
             if (selection.equals("1")) {
-                System.out.println("Here is a list of contestant names. Enter the corresponding number for more info.");
+                displayContestants();
             }
 
             if (selection.equals("2")) {
-                System.out.println("On your team, you currently have this many contestants:" + numContestantsCast);
-                System.out.println("Would you like to add a contestant to your team? (Yes/No)");
-
-                if (selection.equals("Yes")) {
-                    System.out.println("Here is a list of contestant names. Enter their number to add them.");
-                } else {
-                    System.out.println("Here is your current team");
-                }
+                System.out.println("Here is a list of all the members of your team");
+                displayCast();
+                changeTeam();
             }
 
             if (selection.equals("3")) {
-                break;
+                control = false;
             }
         }
+
+        System.out.println("Thank you for playing, the app will now close.");
+
     }
+
+    private void displayHome() {
+        System.out.println("Enter 1 to view all contestants.");
+        System.out.println("Enter 2 to view your cast.");
+        System.out.println("Enter 3 to quit.");
+
+    }
+
+    private void displayContestants() {
+        System.out.println("Here is a list of all contestants.");
+        System.out.println("\tChad Smith");
+        System.out.println("\tJack Bob");
+        System.out.println("\tAndrew Mah");
+    }
+
+    private void displayCast() {
+        System.out.println(cast);
+    }
+
+    private void changeTeam() {
+        actionChosen();
+        if (selection.equals("a")) {
+            addContestant();
+        }
+
+        if (selection.equals("r")) {
+            removeContestant();
+        }
+    }
+
+    private void actionChosen() {
+        System.out.println("Enter a to add to your team, r to remove from your team");
+        selection = userInput.next();
+    }
+
+    private void addContestant() {
+        System.out.println("Which contestant would you like to add? Enter their first name.");
+        displayContestants();
+        selection = userInput.next();
+        if (selection.equals("Chad")) {
+            cast.add(c1);
+            System.out.println("Here is your new cast list.");
+            displayCast();
+        }
+        if (selection.equals("Jack")) {
+            cast.add(c2);
+            System.out.println("Here is your new cast list.");
+            displayCast();
+        }
+        if (selection.equals("Andrew")) {
+            cast.add(c3);
+            System.out.println("Here is your new cast list.");
+            displayCast();
+        }
+    }
+
+    private void removeContestant() {
+        System.out.println("Which contestant would you like to remove? Enter their first name");
+        displayCast();
+        selection = userInput.next();
+        if (selection.equals("Chad")) {
+            cast.remove(c1);
+            System.out.println("Here is your new cast list.");
+            displayCast();
+        }
+        if (selection.equals("Jack")) {
+            cast.remove(c2);
+        }
+        if (selection.equals("Andrew")) {
+            cast.remove(c3);
+        }
+
+    }
+
 }

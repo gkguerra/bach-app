@@ -13,7 +13,7 @@ class CastTest {
 
     @BeforeEach
     public void runFirst() {
-        testCast = new Cast();
+        testCast = new Cast("Test Cast");
         c1 = new Contestant("Chad Smith", "Florida",
                 "Chad grew up a wrestler.",
                 0, 0,0,0,0,"None","Eligible");
@@ -29,7 +29,7 @@ class CastTest {
     public void addToEmptyTest() {
         testCast.add(c1);
         assertEquals(1, testCast.size());
-        // assertTrue(testCast.contains(c1));
+        assertTrue(testCast.contains(c1));
     }
 
     @Test
@@ -38,6 +38,9 @@ class CastTest {
         testCast.add(c2);
         testCast.add(c3);
         assertEquals(3, testCast.size());
+        assertTrue(testCast.contains(c1));
+        assertTrue(testCast.contains(c2));
+        assertTrue(testCast.contains(c3));
     }
 
     @Test
@@ -56,5 +59,3 @@ class CastTest {
     }
 
     }
-
-    //size, remove, and add

@@ -1,18 +1,15 @@
 package model;
 
+import model.Contestant;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Cast {
-    private String castName;           //the name of your cast
-    private List<Contestant> cast;
-    private int overallScore;         // overall score of the cast calculated from contestant information
-    private Contestant c1;
-    private Contestant c2;
-    private Contestant c3;
+    private String name; //This is the name of the team
+    private final ArrayList<Contestant> cast; //The contestants in the cast
 
-    public Cast() {
-        cast = new ArrayList<>();
+    public Cast(String castName) {
+        cast = new ArrayList<Contestant>();
+        name = castName;
     }
 
     // MODIFIES: this
@@ -27,14 +24,16 @@ public class Cast {
     // MODIFIES: this
     // EFFECTS: Contestant c is removed from the Cast
     public void remove(Contestant c) {
-        if (cast.contains(c)) {
-            cast.remove(c);
-        }
+        cast.remove(c);
     }
 
     // EFFECTS: Returns the number of contestants in the Cast
     public int size() {
         return cast.size();
+    }
+
+    public boolean contains(Contestant c) {
+        return cast.contains(c);
     }
 }
 
