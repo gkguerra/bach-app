@@ -11,6 +11,7 @@ public class Cast {
         name = castName;
     }
 
+    // help from IntegerSet lab
 
     // MODIFIES: this
     // EFFECTS: Contestant c is added to the Cast if they're not already in it
@@ -34,6 +35,18 @@ public class Cast {
 
     public boolean contains(Contestant c) {
         return cast.contains(c);
+    }
+
+    public Cast contestant(Cast other) {
+        Cast contestant = new Cast("Jonathan's Cast");
+
+        for (Contestant next: cast) {
+            if (other.contains(next)) {
+                contestant.add(next);
+            }
+        }
+
+        return contestant;
     }
 }
 

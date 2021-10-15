@@ -44,12 +44,28 @@ class CastTest {
     }
 
     @Test
+    public void addButAlreadyThereTest() {
+        testCast.add(c1);
+        testCast.add(c1);
+        assertTrue(testCast.contains(c1));
+        assertEquals(1, testCast.size());
+    }
+
+    @Test
     public void removeTest() {
         testCast.add(c1);
         testCast.add(c2);
         assertEquals(2, testCast.size());
         testCast.remove(c2);
         assertEquals(1, testCast.size());
+    }
+
+    @Test
+    public void removeButNotThereTest() {
+        testCast.add(c1);
+        testCast.remove(c2);
+        assertEquals(1, testCast.size());
+        assertTrue(testCast.contains(c1));
     }
 
     @Test
