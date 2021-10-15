@@ -4,11 +4,13 @@ import model.Contestant;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// The Teller project was consulted in the making of this code.
+// This class references code from this TellerApp repository.
+// Link: https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
 
-// The BachGameConsole class contains a scanner called userInput which reads input from the user in the console,
-// an array list of contestants (a cast) and the initial selection, an empty string. There are four contestants
-// instantiated.
+// The BachGameConsole class.
+// Contains a scanner called userInput which reads input from the user in the console, an array list of contestants
+// (a cast) and the initial selection, an empty string. There are four contestants instantiated currently.
+
 public class BachGameConsole {
     private final Scanner userInput;
     private final ArrayList<Contestant> cast;
@@ -18,13 +20,17 @@ public class BachGameConsole {
     Contestant c3 = new Contestant("Andrew Mah", "California", 2, 3, "Eligible");
     Contestant c4 = new Contestant("Jason Chase", "Chicago", 2, 1, "Eligible");
 
-    // EFFECTS: Runs the entire game.
+    // EFFECTS: Starts the console.
     public BachGameConsole() {
         cast = new ArrayList<>();
         userInput = new Scanner(System.in);
+        System.out.println("WELCOME TO BachGame! The world's #1 (and only) reality TV Fantasy Football Game!");
         runBachGame();
     }
 
+    // REQUIRES: A valid input from the user.
+    // MODIFIES: The console.
+    // EFFECTS: Runs the main menu, selection, and shut down process. The "framework" of the application.
     private void runBachGame() {
         boolean control = true;
         while (control) {
@@ -35,7 +41,7 @@ public class BachGameConsole {
             }
 
             if (selection.equals("2")) {
-                System.out.println("Here is a list of all the members of your team");
+                System.out.println("Here is a list of all the members of your cast! They're looking great!");
                 displayCast();
                 changeTeam();
             }
@@ -49,13 +55,18 @@ public class BachGameConsole {
 
     }
 
+    // MODIFIES: The text display on the console.
+    // EFFECTS: Displays the text for the home menu on the console.
     private void displayHome() {
-        System.out.println("Enter 1 to view all contestants.");
-        System.out.println("Enter 2 to view your cast.");
-        System.out.println("Enter 3 to quit.");
+        System.out.println("HOME MENU:");
+        System.out.println("\tEnter 1 to view all contestants.");
+        System.out.println("\tEnter 2 to view your cast.");
+        System.out.println("\tEnter 3 to quit.");
 
     }
 
+    // MODIFIES: The text display on the console.
+    // EFFECTS: Displays the list of ALL contestants on the console.
     private void displayContestants() {
         System.out.println("Here is a list of all contestants.");
         System.out.println("\tChad Smith");
@@ -64,73 +75,88 @@ public class BachGameConsole {
         System.out.println("\tJason Chase");
     }
 
+    // REQUIRES: A valid input from the user.
+    // MODIFIES: This takes in a selection from the user and then carries out the appropriate action.
+    // EFFECTS: Displays the text for the home menu on the application.
     private void changeTeam() {
-        actionChosen();
-        if (selection.equals("a")) {
+        System.out.println("Enter 1 to add to your team, 2 to remove from your team, or 3 to quit");
+        selection = userInput.next();
+
+        if (selection.equals("1")) {
             addContestant();
         }
 
-        if (selection.equals("r")) {
+        if (selection.equals("2")) {
             removeContestant();
         }
     }
 
-    private void actionChosen() {
-        System.out.println("Enter a to add to your team, r to remove from your team");
-        selection = userInput.next();
-    }
-
+    // REQUIRES: A valid input from the user.
+    // MODIFIES: A user's cast.
+    // EFFECTS: Shows all the contestants on the console and then adds the selected contestant.
     private void addContestant() {
-        System.out.println("Which contestant would you like to add? Enter their first name.");
+        System.out.println("Which contestant would you like to add? Enter their first name or enter 3 to quit.");
         displayContestants();
         selection = userInput.next();
 
         if (selection.equals("Chad")) {
-            cast.add(c1);
-            System.out.println("Here is your new cast list.");
-            displayCast();
+            easyAdd(c1);
         }
 
         if (selection.equals("Jack")) {
-            cast.add(c2);
-            System.out.println("Here is your new cast list.");
-            displayCast();
+            easyAdd(c2);
         }
 
         if (selection.equals("Andrew")) {
-            cast.add(c3);
-            System.out.println("Here is your new cast list.");
-            displayCast();
+            easyAdd(c3);
         }
 
         if (selection.equals("Jason")) {
-            cast.add(c4);
-            System.out.println("Here is your new cast list.");
-            displayCast();
+            easyAdd(c4);
         }
     }
 
+    // REQUIRES: A contestant c.
+    // MODIFIES: The cast list.
+    // EFFECTS: Adds the contestant to the cast list, and displays the users new cast.
+    private void easyAdd(Contestant c) {
+        cast.add(c);
+        System.out.println("Here is your new cast list.");
+        displayCast();
+    }
+
+    // REQUIRES: A valid input from the user.
+    // MODIFIES: A user's cast.
+    // EFFECTS: Shows all the contestants on the console and then removes the selected contestant.
     private void removeContestant() {
         System.out.println("Which contestant would you like to remove? Enter their first name");
         displayCast();
         selection = userInput.next();
         if (selection.equals("Chad")) {
-            cast.remove(c1);
-            System.out.println("Here is your new cast list.");
-            displayCast();
+            easyRemove(c1);
         }
         if (selection.equals("Jack")) {
-            cast.remove(c2);
+            easyRemove(c2);
         }
         if (selection.equals("Andrew")) {
-            cast.remove(c3);
+            easyRemove(c3);
         }
         if (selection.equals("Jason")) {
-            cast.remove(c4);
+            easyRemove(c4);
         }
-
     }
 
+    // REQUIRES: A contestant c.
+    // MODIFIES: The cast list.
+    // EFFECTS: Removes the contestant to the cast list, and displays the users new cast.
+    private void easyRemove(Contestant c) {
+        cast.remove(c);
+        System.out.println("Here is your new cast list.");
+        displayCast();
+    }
+
+    // MODIFIES: The text display on the console.
+    // EFFECTS: Displays a user's cast.
     private void displayCast() {
         System.out.println(cast);
     }

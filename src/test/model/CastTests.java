@@ -5,7 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Tests {
+// This test class references code from this IntegerSet repository.
+// Link: https://github.students.cs.ubc.ca/CPSC210/IntegerSetLecLab.git
+
+class CastTests {
     private Cast testCast;
     private Contestant c1;
     private Contestant c2;
@@ -16,46 +19,11 @@ class Tests {
     public void runFirst() {
         testCast = new Cast("Test Cast", 123);
         c1 = new Contestant("Chad Smith", "Florida", 0, 0, "Eligible");
-        c2 = new Contestant("Jack Bob", "Atlanta", 0, 0, "Eligible");
+        c2 = new Contestant("Jack Bob", "Atlanta", 0, 0, "Ineligible");
         c3 = new Contestant("Andrew Mah", "California", 1, 3, "Eligible");
         c4 = new Contestant("Jason Chase", "Chicago", 2, 1, "Eligible");
     }
 
-    @Test
-    public void getNameTest() {
-        assertEquals("Chad Smith", c1.getName());
-    }
-
-    @Test
-    public void getHometown() {
-        assertEquals("Florida", c1.getHometown());
-    }
-
-    @Test
-    public void getRoses() {
-        assertEquals(1, c3.getRoses());
-    }
-
-    @Test
-    public void getRosesZero() {
-        assertEquals(0, c1.getRoses());
-    }
-
-
-    @Test
-    public void getDatesZero() {
-        assertEquals(0, c1.getDates());
-    }
-
-    @Test
-    public void getDates() {
-        assertEquals(3, c3.getDates());
-    }
-
-    @Test
-    public void getStatus() {
-        assertEquals("Eligible", c1.getStatus());
-    }
 
     @Test
     public void getCastNameTest() {
