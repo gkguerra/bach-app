@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-// IntegerSet was consulted in the making of this code
+// IntegerSet was consulted in the making of this code.
 
 // This is the class for a cast of contestants.
 public class Cast {
@@ -49,6 +49,5 @@ public class Cast {
     public boolean contains(Contestant c) {
         return cast.contains(c);
     }
-
 }
 

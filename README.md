@@ -32,5 +32,4 @@ Have:
 - As a user, I want to be able to view all the contestants in the game.
 - As a user, I want to be able to view the contestants on my cast.
 - As a user, I want to be able to add contestants to my cast.
-- As a user, I want to be able to remove contestants from my cast. 
-- As a user, I want to be able to update the statistics of a contestant.
+- As a user, I want to be able to remove contestants from my cast.

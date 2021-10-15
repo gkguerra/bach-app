@@ -4,8 +4,11 @@ import model.Contestant;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// this console interface was written with help from the Teller project presented in class
+// The Teller project was consulted in the making of this code.
 
+// The BachGameConsole class contains a scanner called userInput which reads input from the user in the console,
+// an array list of contestants (a cast) and the initial selection, an empty string. There are four contestants
+// instantiated.
 public class BachGameConsole {
     private final Scanner userInput;
     private final ArrayList<Contestant> cast;
@@ -15,6 +18,7 @@ public class BachGameConsole {
     Contestant c3 = new Contestant("Andrew Mah", "California", 2, 3, "Eligible");
     Contestant c4 = new Contestant("Jason Chase", "Chicago", 2, 1, "Eligible");
 
+    // EFFECTS: Runs the entire game.
     public BachGameConsole() {
         cast = new ArrayList<>();
         userInput = new Scanner(System.in);
@@ -58,10 +62,6 @@ public class BachGameConsole {
         System.out.println("\tJack Bob");
         System.out.println("\tAndrew Mah");
         System.out.println("\tJason Chase");
-    }
-
-    private void displayCast() {
-        System.out.println(cast);
     }
 
     private void changeTeam() {
@@ -128,5 +128,10 @@ public class BachGameConsole {
         if (selection.equals("Jason")) {
             cast.remove(c4);
         }
+
+    }
+
+    private void displayCast() {
+        System.out.println(cast);
     }
 }
