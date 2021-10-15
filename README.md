@@ -29,10 +29,8 @@ in developing this application :)
 ## User Stories:
 
 Have: 
-- As a user, I want to be able to create my own cast.
+- As a user, I want to be able to view all the contestants in the game.
+- As a user, I want to be able to view the contestants on my cast.
 - As a user, I want to be able to add contestants to my cast.
-- As a user, I want to be able to remove a contestant from my cast.
-- As a user, I want to be able to see the overall score of my cast.
-- As a user, I want to be able to view the current status of contestants.
-- As a user, I want to be able to check each statistic of contestants.
-- As a user, I want to be able to check the biography, hometown, and name of contestants.
+- As a user, I want to be able to remove contestants from my cast. 
+- As a user, I want to be able to update the statistics of a contestant.

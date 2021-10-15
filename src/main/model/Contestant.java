@@ -7,11 +7,12 @@ public class Contestant {
     private int dates;              // number of dates a contestant has been one
     private String status;          // contestant status (either eliminated, safe, or eligible)
 
+    //EFFECTS: Creates a new contestant
     public Contestant(String name, String hometown, int roses, int dates, String status) {
         this.name = name;
         this.hometown = hometown;
-        this.roses = 0;
-        this.dates = 0;
+        this.roses = roses;
+        this.dates = dates;
         this.status = "Eligible";
     }
 
@@ -22,7 +23,6 @@ public class Contestant {
     public String getHometown() {
         return hometown;
     }
-
 
     public int getRoses() {
         return roses;

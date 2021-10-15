@@ -12,7 +12,8 @@ public class BachGameConsole {
     String selection = "";
     Contestant c1 = new Contestant("Chad Smith", "Florida", 2, 0, "Eligible");
     Contestant c2 = new Contestant("Jack Bob", "Atlanta", 0, 0, "Eligible");
-    Contestant c3 = new Contestant("Andrew Mah", "California", 0, 0, "Eligible");
+    Contestant c3 = new Contestant("Andrew Mah", "California", 2, 3, "Eligible");
+    Contestant c4 = new Contestant("Jason Chase", "Chicago", 2, 1, "Eligible");
 
     public BachGameConsole() {
         cast = new ArrayList<>();
@@ -56,6 +57,7 @@ public class BachGameConsole {
         System.out.println("\tChad Smith");
         System.out.println("\tJack Bob");
         System.out.println("\tAndrew Mah");
+        System.out.println("\tJason Chase");
     }
 
     private void displayCast() {
@@ -82,18 +84,27 @@ public class BachGameConsole {
         System.out.println("Which contestant would you like to add? Enter their first name.");
         displayContestants();
         selection = userInput.next();
+
         if (selection.equals("Chad")) {
             cast.add(c1);
             System.out.println("Here is your new cast list.");
             displayCast();
         }
+
         if (selection.equals("Jack")) {
             cast.add(c2);
             System.out.println("Here is your new cast list.");
             displayCast();
         }
+
         if (selection.equals("Andrew")) {
             cast.add(c3);
+            System.out.println("Here is your new cast list.");
+            displayCast();
+        }
+
+        if (selection.equals("Jason")) {
+            cast.add(c4);
             System.out.println("Here is your new cast list.");
             displayCast();
         }
@@ -114,7 +125,8 @@ public class BachGameConsole {
         if (selection.equals("Andrew")) {
             cast.remove(c3);
         }
-
+        if (selection.equals("Jason")) {
+            cast.remove(c4);
+        }
     }
-
 }
