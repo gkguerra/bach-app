@@ -41,7 +41,7 @@ public class BachGameConsole {
             }
 
             if (selection.equals("2")) {
-                System.out.println("Here is a list of all the members of your cast! They're looking great!");
+                System.out.println("Here is a list of all the members of your cast!");
                 displayCast();
                 changeTeam();
             }
@@ -60,7 +60,7 @@ public class BachGameConsole {
     private void displayHome() {
         System.out.println("HOME MENU:");
         System.out.println("\tEnter 1 to view all contestants.");
-        System.out.println("\tEnter 2 to view your cast.");
+        System.out.println("\tEnter 2 to view or change your cast.");
         System.out.println("\tEnter 3 to quit.");
 
     }
@@ -76,7 +76,7 @@ public class BachGameConsole {
     }
 
     // REQUIRES: A valid input from the user.
-    // MODIFIES: This takes in a selection from the user and then carries out the appropriate action.
+    // MODIFIES: The console.
     // EFFECTS: Displays the text for the home menu on the application.
     private void changeTeam() {
         System.out.println("Enter 1 to add to your team, 2 to remove from your team, or 3 to quit");
@@ -120,9 +120,19 @@ public class BachGameConsole {
     // MODIFIES: The cast list.
     // EFFECTS: Adds the contestant to the cast list, and displays the users new cast.
     private void easyAdd(Contestant c) {
-        cast.add(c);
-        System.out.println("Here is your new cast list.");
-        displayCast();
+        if (cast.size() >= 3) {
+            System.out.println("You already have three contestants on your cast. Please remove one before adding.");
+        }
+
+        if (cast.contains(c)) {
+            System.out.println("You already have this contestant on your cast. Please choose a different one.");
+        }
+
+        if ((cast.size() < 3) && (!cast.contains(c))) {
+            cast.add(c);
+            System.out.println("Here is your new cast list.");
+            displayCast();
+        }
     }
 
     // REQUIRES: A valid input from the user.

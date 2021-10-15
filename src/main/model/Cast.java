@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 // A cast of contestants.
 public class Cast {
-    private final String name; //This is the name of the team
-    private final int id;
-    private final ArrayList<Contestant> cast; //The contestants in the cast
+    private final String name;                  //This is the name of the team
+    private final int id;                       //This is the ID of the team
+    private final ArrayList<Contestant> cast;   //The contestants in the cast
 
     // Constructs an empty cast of contestants. We must name the cast and give it an account ID.
     public Cast(String castName, int accountID) {

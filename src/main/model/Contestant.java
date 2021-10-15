@@ -1,12 +1,13 @@
 package model;
 
+// A contestant on the Bachelorette.
 public class Contestant {
-    private final String name;      // contestant's name
-    private final String hometown;  // contestant's hometown
-    private int roses;              // number of roses a contestant has received
-    private int dates;              // number of dates a contestant has been one
-    private String status;          // contestant status (either eliminated, safe, or eligible)
-    private int score;              // the contestant's score (based on number of roses and dates)
+    private final String name;      //Contestant's name
+    private final String hometown;  //Contestant's hometown
+    private int roses;              //Number of roses a contestant has received
+    private int dates;              //Number of dates a contestant has been one
+    private String status;          //Contestant status (either eliminated, safe, or eligible)
+    private int score;              //The contestant's score (based on number of roses and dates)
 
     //EFFECTS: Creates a new contestant. Must specify the contestant's name, hometown, number of roses, number of
     // dates, and current status.
