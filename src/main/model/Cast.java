@@ -4,14 +4,24 @@ import java.util.ArrayList;
 
 public class Cast {
     private final String name; //This is the name of the team
+    private final int id;
     private final ArrayList<Contestant> cast; //The contestants in the cast
 
-    public Cast(String castName) {
+    public Cast(String castName, int accountID) {
         cast = new ArrayList<>();
         name = castName;
+        id = accountID;
     }
 
     // help from IntegerSet lab
+
+    public String getCastName() {
+        return name;
+    }
+
+    public int getID() {
+        return id;
+    }
 
     // MODIFIES: this
     // EFFECTS: Contestant c is added to the Cast if they're not already in it
@@ -37,16 +47,5 @@ public class Cast {
         return cast.contains(c);
     }
 
-    public Cast contestant(Cast other) {
-        Cast contestant = new Cast("Jonathan's Cast");
-
-        for (Contestant next: cast) {
-            if (other.contains(next)) {
-                contestant.add(next);
-            }
-        }
-
-        return contestant;
-    }
 }
 

@@ -10,14 +10,9 @@ public class BachGameConsole {
     private final Scanner userInput;
     private final ArrayList<Contestant> cast;
     String selection = "";
-    Contestant c1 = new Contestant("Chad Smith", "Florida", "Chad grew up a wrestler.",
-            0, 0,0,0,0,"None","Eligible");
-    Contestant c2 = new Contestant("Jack Bob", "Atlanta",
-            "Jack is unemployed.",
-            0, 0,0,0,0,"None","Eligible");
-    Contestant c3 = new Contestant("Andrew Mah", "California",
-            "Andrew goes to the gym.",
-            0, 0,0,0,0,"None","Eligible");
+    Contestant c1 = new Contestant("Chad Smith", "Florida", 2, 0, "Eligible");
+    Contestant c2 = new Contestant("Jack Bob", "Atlanta", 0, 0, "Eligible");
+    Contestant c3 = new Contestant("Andrew Mah", "California", 0, 0, "Eligible");
 
     public BachGameConsole() {
         cast = new ArrayList<>();
