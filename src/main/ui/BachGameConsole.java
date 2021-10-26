@@ -38,7 +38,7 @@ public class BachGameConsole {
         cast = new Cast("Gabbi", 1234);
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
-        System.out.println("WELCOME TO BachGame! The world's #1 (and only) reality TV Fantasy Football Game!");
+        System.out.println("WELCOME TO BachApp! The world's #1 (and only) reality TV Fantasy Football Game!");
         startBachGame();
     }
 
@@ -65,13 +65,19 @@ public class BachGameConsole {
             selection = userInput.next();
 
             if (selection.equals("3")) {
-                control = false;
+                System.out.println("Would you like to save your cast? (yes/no)");
+                selection = userInput.next();
+                if (selection.equals("yes")) {
+                    saveCast();
+                    System.out.println("Your cast has been saved!");
+                    control = false;
+                }
+
             } else {
                 processSelection(selection);
             }
         }
-        saveCast();
-        System.out.println("Your cast has been automatically saved. Thank you for playing, the app will now close.");
+        System.out.println("Thank you for playing, the app will now close.");
     }
 
     public void processSelection(String selection) {
@@ -200,7 +206,9 @@ public class BachGameConsole {
     // MODIFIES: The text display on the console.
     // EFFECTS: Displays a user's cast.
     private void displayCast() {
-        System.out.println(cast);
+        for (Contestant c : cast.getContestants()) {
+            System.out.println(c.getName());
+        }
     }
 
     private void loadCast() {

@@ -66,5 +66,4 @@ public class JsonReader {
         Contestant c = new Contestant("Jim", "Alabama", 8,8,"Eligible");
         cast.add(c);
     }
-
 }

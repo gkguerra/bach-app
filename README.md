@@ -1,4 +1,4 @@
-# BachGame
+# BachApp
 
 ## A reality TV fantasy football application!
 

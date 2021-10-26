@@ -18,7 +18,7 @@ import java.util.List;
 public class Cast implements Writable {
     private String name;                  //This is the name of the team
     private int id;                       //This is the ID of the team
-    private List<Contestant> cast;   //The contestants in the cast
+    private ArrayList<Contestant> cast;   //The contestants in the cast
 
     // Constructs an empty cast of contestants. We must name the cast and give it an account ID.
     public Cast(String castName, int accountID) {
