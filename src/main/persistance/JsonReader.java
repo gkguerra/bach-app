@@ -11,6 +11,9 @@ import java.util.stream.Stream;
 
 import org.json.*;
 
+// This class references code from this JsonSerializationDemo repository.
+// Link: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+
 // A reader that reads a Cast from JSON data stored in file
 public class JsonReader {
     private String source;
@@ -57,7 +60,7 @@ public class JsonReader {
     }
 
     // MODIFIES: Cast
-    // EFFECTS: Parses contestant from JSON object and adds it to workroom
+    // EFFECTS: Parses contestant from JSON object and adds it to cast
     private void addContestant(Cast cast, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         Contestant c = new Contestant("Jim", "Alabama", 8,8,"Eligible");

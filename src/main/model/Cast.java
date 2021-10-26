@@ -1,15 +1,24 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistance.Writable;
+
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 // This class references code from this IntegerSet repository.
 // Link: https://github.students.cs.ubc.ca/CPSC210/IntegerSetLecLab.git
 
+// This class references code from this JsonSerializationDemo repository.
+// Link: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+
 // A cast of contestants.
-public class Cast {
-    private final String name;                  //This is the name of the team
-    private final int id;                       //This is the ID of the team
-    private final ArrayList<Contestant> cast;   //The contestants in the cast
+public class Cast implements Writable {
+    private String name;                  //This is the name of the team
+    private int id;                       //This is the ID of the team
+    private List<Contestant> cast;   //The contestants in the cast
 
     // Constructs an empty cast of contestants. We must name the cast and give it an account ID.
     public Cast(String castName, int accountID) {
@@ -51,6 +60,28 @@ public class Cast {
     // EFFECTS: Returns true if contestant c is already in the cast, otherwise returns false.
     public boolean contains(Contestant c) {
         return cast.contains(c);
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("contestants", fullCastToJson());
+        return json;
+    }
+
+    private JSONArray fullCastToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Contestant c : cast) {
+            jsonArray.put(c.toJson());
+        }
+
+        return jsonArray;
+    }
+
+    public List<Contestant> getContestants() {
+        return Collections.unmodifiableList(cast);
     }
 }
 

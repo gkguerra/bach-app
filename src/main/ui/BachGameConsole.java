@@ -1,19 +1,31 @@
 package ui;
 
 import model.Contestant;
-import java.util.ArrayList;
+import model.Cast;
+import persistance.JsonReader;
+import persistance.JsonWriter;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 // This class references code from this TellerApp repository.
 // Link: https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
+
+// This class references code from this JsonSerializationDemo repository.
+// Link: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
 
 // The BachGameConsole class.
 // Contains a scanner called userInput which reads input from the user in the console, an array list of contestants
 // (a cast) and the initial selection, an empty string. There are four contestants instantiated currently.
 
 public class BachGameConsole {
+    private static final String JSON_STORE = "./data.json";
     private final Scanner userInput;
-    private final ArrayList<Contestant> cast;
+    private Cast cast;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+
     String selection = "";
     Contestant c1 = new Contestant("Chad Smith", "Florida", 2, 0, "Eligible");
     Contestant c2 = new Contestant("Jack Bob", "Atlanta", 0, 0, "Eligible");
@@ -21,11 +33,25 @@ public class BachGameConsole {
     Contestant c4 = new Contestant("Jason Chase", "Chicago", 2, 1, "Eligible");
 
     // EFFECTS: Starts the console.
-    public BachGameConsole() {
-        cast = new ArrayList<>();
+    public BachGameConsole() throws FileNotFoundException {
         userInput = new Scanner(System.in);
+        cast = new Cast("Gabbi", 1234);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         System.out.println("WELCOME TO BachGame! The world's #1 (and only) reality TV Fantasy Football Game!");
-        runBachGame();
+        startBachGame();
+    }
+
+    private void startBachGame() {
+        System.out.println("Enter 1 to load your account or 2 to create a new account.");
+        selection = userInput.next();
+        if (selection.equals("1")) {
+            loadCast();
+            runBachGame();
+        } else if (selection.equals("2")) {
+            System.out.println("Your account has been created.");
+            runBachGame();
+        }
     }
 
     // REQUIRES: A valid input from the user.
@@ -33,27 +59,33 @@ public class BachGameConsole {
     // EFFECTS: Runs the main menu, selection, and shut down process. The "framework" of the application.
     private void runBachGame() {
         boolean control = true;
+
         while (control) {
             displayHome();
             selection = userInput.next();
-            if (selection.equals("1")) {
-                displayContestants();
-            }
-
-            if (selection.equals("2")) {
-                System.out.println("Here is a list of all the members of your cast!");
-                displayCast();
-                changeTeam();
-            }
 
             if (selection.equals("3")) {
                 control = false;
+            } else {
+                processSelection(selection);
             }
         }
-
-        System.out.println("Thank you for playing, the app will now close.");
-
+        saveCast();
+        System.out.println("Your cast has been automatically saved. Thank you for playing, the app will now close.");
     }
+
+    public void processSelection(String selection) {
+        if (selection.equals("1")) {
+            displayContestants();
+        } else if (selection.equals("2")) {
+            System.out.println("Here is a list of all the members of your cast!");
+            displayCast();
+            changeTeam();
+        } else {
+            System.out.println("Selection is not valid.");
+        }
+    }
+
 
     // MODIFIES: The text display on the console.
     // EFFECTS: Displays the text for the home menu on the console.
@@ -169,5 +201,25 @@ public class BachGameConsole {
     // EFFECTS: Displays a user's cast.
     private void displayCast() {
         System.out.println(cast);
+    }
+
+    private void loadCast() {
+        try {
+            cast = jsonReader.read();
+            System.out.println("Loaded your cast from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file " + JSON_STORE);
+        }
+    }
+
+    private void saveCast() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(cast);
+            jsonWriter.close();
+            System.out.println("Saved to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file " + JSON_STORE);
+        }
     }
 }
