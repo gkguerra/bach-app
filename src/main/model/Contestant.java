@@ -61,7 +61,7 @@ public class Contestant implements Writable {
         json.put("hometown", hometown);
         json.put("roses", roses);
         json.put("dates", dates);
-        json.put("eligible", status);
+        json.put("status", status);
         json.put("score", score);
         return json;
     }

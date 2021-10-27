@@ -45,6 +45,7 @@ public class JsonReader {
     private Cast parseCast(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         Cast cast = new Cast("Jonathan's Cast", 1287);
+        System.out.print("Test");
         addContestants(cast, jsonObject);
         return cast;
     }
@@ -52,7 +53,7 @@ public class JsonReader {
     // MODIFIES: Cast
     // EFFECTS: Parses contestants from JSON object and adds them to Cast
     private void addContestants(Cast cast, JSONObject jsonObject) {
-        JSONArray jsonArray = jsonObject.getJSONArray("contestant");
+        JSONArray jsonArray = jsonObject.getJSONArray("contestants");
         for (Object json : jsonArray) {
             JSONObject nextContestant = (JSONObject) json;
             addContestant(cast, nextContestant);
@@ -63,7 +64,12 @@ public class JsonReader {
     // EFFECTS: Parses contestant from JSON object and adds it to cast
     private void addContestant(Cast cast, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
-        Contestant c = new Contestant("Jim", "Alabama", 8,8,"Eligible");
+        String hometown = jsonObject.getString("hometown");
+        int roses = jsonObject.getInt("roses");
+        int dates = jsonObject.getInt("dates");
+        String status = jsonObject.getString("eligible");
+
+        Contestant c = new Contestant(name, hometown, roses, dates, status);
         cast.add(c);
     }
 }

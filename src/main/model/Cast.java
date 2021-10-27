@@ -66,7 +66,7 @@ public class Cast implements Writable {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
-        json.put("contestants", fullCastToJson());
+        json.put("contestant", fullCastToJson());
         return json;
     }
 
