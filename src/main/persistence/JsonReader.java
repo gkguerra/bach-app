@@ -1,4 +1,4 @@
-package persistance;
+package persistence;
 
 import model.Cast;
 import model.Contestant;
@@ -44,7 +44,7 @@ public class JsonReader {
     // EFFECTS: Parses Cast from JSON object and returns it
     private Cast parseCast(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
-        Cast cast = new Cast("Jonathan's Cast", 1287);
+        Cast cast = new Cast("My Cast", 1234);
         System.out.print("Test");
         addContestants(cast, jsonObject);
         return cast;

@@ -1,4 +1,4 @@
-package persistance;
+package persistence;
 
 import model.Cast;
 import org.json.JSONObject;

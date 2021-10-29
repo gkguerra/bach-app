@@ -2,8 +2,8 @@ package ui;
 
 import model.Contestant;
 import model.Cast;
-import persistance.JsonReader;
-import persistance.JsonWriter;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

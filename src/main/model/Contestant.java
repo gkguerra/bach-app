@@ -1,7 +1,7 @@
 package model;
 
 import org.json.JSONObject;
-import persistance.Writable;
+import persistence.Writable;
 
 // This class references code from this JsonSerializationDemo repository.
 // Link: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
