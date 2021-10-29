@@ -43,13 +43,16 @@ public class BachGameConsole {
     }
 
     private void startBachGame() {
-        System.out.println("Enter 1 to load your account or 2 to create a new account.");
+        System.out.println("Enter 1 to create a new account or 2 to log in to an existing account.");
         selection = userInput.next();
         if (selection.equals("1")) {
-            loadCast();
+            System.out.println("What is your name?");
+            selection = userInput.next();
+            cast.setCastName(selection);
+            System.out.println("Your account has been created.");
             runBachGame();
         } else if (selection.equals("2")) {
-            System.out.println("Your account has been created.");
+            loadCast();
             runBachGame();
         }
     }

@@ -53,7 +53,7 @@ public class JsonReader {
     // MODIFIES: Cast
     // EFFECTS: Parses contestants from JSON object and adds them to Cast
     private void addContestants(Cast cast, JSONObject jsonObject) {
-        JSONArray jsonArray = jsonObject.getJSONArray("contestants");
+        JSONArray jsonArray = jsonObject.getJSONArray("contestant");
         for (Object json : jsonArray) {
             JSONObject nextContestant = (JSONObject) json;
             addContestant(cast, nextContestant);
@@ -67,7 +67,7 @@ public class JsonReader {
         String hometown = jsonObject.getString("hometown");
         int roses = jsonObject.getInt("roses");
         int dates = jsonObject.getInt("dates");
-        String status = jsonObject.getString("eligible");
+        String status = jsonObject.getString("status");
 
         Contestant c = new Contestant(name, hometown, roses, dates, status);
         cast.add(c);

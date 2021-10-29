@@ -31,6 +31,10 @@ public class Cast implements Writable {
         return name;
     }
 
+    public void setCastName(String newName) {
+        name = newName;
+    }
+
     public int getID() {
         return id;
     }
