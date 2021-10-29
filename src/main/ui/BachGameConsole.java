@@ -20,7 +20,7 @@ import java.util.Scanner;
 // (a cast) and the initial selection, an empty string. There are four contestants instantiated currently.
 
 public class BachGameConsole {
-    private static final String JSON_STORE = "./data.json";
+    private static final String JSON_STORE = "./data/myCast.json";
     private final Scanner userInput;
     private Cast cast;
     private JsonWriter jsonWriter;
@@ -49,7 +49,7 @@ public class BachGameConsole {
             System.out.println("What is your name?");
             selection = userInput.next();
             cast.setCastName(selection);
-            System.out.println("Your account has been created.");
+            System.out.println("Hi " + cast.getCastName() + "! Your account has been created.");
             runBachGame();
         } else if (selection.equals("2")) {
             loadCast();
@@ -120,7 +120,7 @@ public class BachGameConsole {
     // MODIFIES: The console.
     // EFFECTS: Displays the text for the home menu on the application.
     private void changeTeam() {
-        System.out.println("Enter 1 to add to your team, 2 to remove from your team, or 3 to quit");
+        System.out.println("Enter 1 to add to your team, 2 to remove from your team, or 3 to return to the main menu.");
         selection = userInput.next();
 
         if (selection.equals("1")) {

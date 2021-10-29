@@ -98,4 +98,10 @@ class CastTests {
         assertEquals(0, testCast.size());
     }
 
+    @Test
+    public void setCastNameTest() {
+        testCast.setCastName("Gabbi's Cast");
+        assertEquals("Gabbi's Cast", testCast.getCastName());
+    }
+
     }

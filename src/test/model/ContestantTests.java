@@ -73,4 +73,9 @@ public class ContestantTests {
         assertEquals(0, c1.getScore());
     }
 
+    @Test
+    public void toStringTest() {
+        assertEquals(c1.getDates() + ":" + c1.getName(), c1.toString());
+    }
+
 }
