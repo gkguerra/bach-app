@@ -214,6 +214,7 @@ public class BachGameConsole {
         }
     }
 
+    // EFFECTS: Loads a Cast from JSON, throws an IOException if it cannot read the file
     private void loadCast() {
         try {
             cast = jsonReader.read();
@@ -223,6 +224,7 @@ public class BachGameConsole {
         }
     }
 
+    // EFFECTS: Saves the Cast to JSON, throws FileNotFoundException if it cannot write to the file
     private void saveCast() {
         try {
             jsonWriter.open();

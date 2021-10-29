@@ -66,6 +66,8 @@ public class Cast implements Writable {
         return cast.contains(c);
     }
 
+    // MODIFIES: JSON object.
+    // EFFECTS: Adds a Cast to a JSON file.
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -74,6 +76,8 @@ public class Cast implements Writable {
         return json;
     }
 
+    // MODIFIES: JSON array.
+    // EFFECTS: Adds each contestant in a Cast to a JSON array.
     private JSONArray fullCastToJson() {
         JSONArray jsonArray = new JSONArray();
 
@@ -84,6 +88,7 @@ public class Cast implements Writable {
         return jsonArray;
     }
 
+    // EFFECTS: Gets all the contestants in a Cast.
     public List<Contestant> getContestants() {
         return Collections.unmodifiableList(cast);
     }

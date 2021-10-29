@@ -14,7 +14,7 @@ public class JsonWriter {
     private PrintWriter writer;
     private String destination;
 
-    // EFFECTS: constructs writer to write to this destination file
+    // EFFECTS: Constructs writer to write to this destination file
     public JsonWriter(String destination) {
         this.destination = destination;
     }
@@ -26,7 +26,7 @@ public class JsonWriter {
     }
 
     // MODIFIES: This.
-    // EFFECTS: writes JSON representation of a Cast to file
+    // EFFECTS: Writes JSON representation of a Cast to file
     public void write(Cast cast) {
         JSONObject json = cast.toJson();
         saveToFile(json.toString(TAB));

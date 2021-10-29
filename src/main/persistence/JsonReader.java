@@ -23,8 +23,7 @@ public class JsonReader {
         this.source = source;
     }
 
-    // EFFECTS: reads cast from file and returns it, throws
-    // IOException if an error occurs reading data from file
+    // EFFECTS: Reads cast from file and returns it, throws IOException if an error occurs reading data from file
     public Cast read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
@@ -45,7 +44,6 @@ public class JsonReader {
     private Cast parseCast(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         Cast cast = new Cast("My Cast", 1234);
-        System.out.print("Test");
         addContestants(cast, jsonObject);
         return cast;
     }
@@ -61,7 +59,7 @@ public class JsonReader {
     }
 
     // MODIFIES: Cast
-    // EFFECTS: Parses contestant from JSON object and adds it to cast
+    // EFFECTS: Parses contestant from JSON object and adds it to Cast
     private void addContestant(Cast cast, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         String hometown = jsonObject.getString("hometown");

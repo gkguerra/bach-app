@@ -54,6 +54,8 @@ public class Contestant implements Writable {
         return dates + ":" + name;
     }
 
+    // MODIFIES: JSON object.
+    // EFFECTS: Adds a contestant to a JSON object.
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
