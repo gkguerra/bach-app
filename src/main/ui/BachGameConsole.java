@@ -20,7 +20,7 @@ import java.util.Scanner;
 // (a cast) and the initial selection, an empty string. There are four contestants instantiated currently.
 
 public class BachGameConsole {
-    private static final String JSON_STORE = "./data/myCast.json";
+    private static String JSON_STORE;
     private final Scanner userInput;
     private Cast cast;
     private JsonWriter jsonWriter;
@@ -35,9 +35,6 @@ public class BachGameConsole {
     // EFFECTS: Starts the console.
     public BachGameConsole() throws FileNotFoundException {
         userInput = new Scanner(System.in);
-        cast = new Cast("Gabbi", 1234);
-        jsonWriter = new JsonWriter(JSON_STORE);
-        jsonReader = new JsonReader(JSON_STORE);
         System.out.println("WELCOME TO BachApp! The world's #1 (and only) reality TV Fantasy Football Game!");
         startBachGame();
     }
@@ -48,12 +45,19 @@ public class BachGameConsole {
         if (selection.equals("1")) {
             System.out.println("What is your name?");
             selection = userInput.next();
-            cast.setCastName(selection);
+            cast = new Cast(selection, 1234);
             System.out.println("Hi " + cast.getCastName() + "! Your account has been created.");
+            JSON_STORE = "./data/" + cast.getCastName() + ".json";
+            jsonWriter = new JsonWriter(JSON_STORE);
+            jsonReader = new JsonReader(JSON_STORE);
             runBachGame();
         } else if (selection.equals("2")) {
+            System.out.println("What is the name of your account?");
+            selection = userInput.next();
+            JSON_STORE = "./data/" + selection + ".json";
+            jsonWriter = new JsonWriter(JSON_STORE);
+            jsonReader = new JsonReader(JSON_STORE);
             loadCast();
-            runBachGame();
         }
     }
 
@@ -219,6 +223,7 @@ public class BachGameConsole {
         try {
             cast = jsonReader.read();
             System.out.println("Loaded your cast from " + JSON_STORE);
+            runBachGame();
         } catch (IOException e) {
             System.out.println("Unable to read from file " + JSON_STORE);
         }
