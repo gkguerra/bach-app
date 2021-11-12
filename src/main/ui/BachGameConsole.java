@@ -10,6 +10,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 
+// https://www.codebyamir.com/blog/sort-list-of-objects-by-field-java
+// https://stackoverflow.com/questions/11160952/goto-next-iteration-in-for-loop-in-java
+// https://howtodoinjava.com/java/io/java-filefilter-example/
+
 // This class references code from this TellerApp repository.
 // Link: https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
 
@@ -257,7 +261,7 @@ public class BachGameConsole {
 
         for (File f : listOfFiles) {
             jsonReader = new JsonReader("./data/" + f.getName());
-            if (f.getName().contains("test") || f.getName().contains("tobs")) {
+            if (f.getName().contains("test") || f.getName().contains("image")) {
                 continue;
             } else {
                 try {

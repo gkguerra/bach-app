@@ -1,0 +1,21 @@
+{
+    "name": "James",
+    "contestant": [
+        {
+            "score": 2,
+            "hometown": "Florida",
+            "name": "Chad Smith",
+            "dates": 0,
+            "roses": 2,
+            "status": "Eligible"
+        },
+        {
+            "score": 3,
+            "hometown": "Chicago",
+            "name": "Jason Chase",
+            "dates": 1,
+            "roses": 2,
+            "status": "Eligible"
+        }
+    ]
+}
