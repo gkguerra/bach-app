@@ -60,6 +60,15 @@ public class Cast implements Writable {
         return cast.size();
     }
 
+    // ADD SIGNATURE AND TESTS
+    public int calculateCastScore() {
+        int overallScore = 0;
+        for (Contestant c : cast) {
+            overallScore += c.getScore();
+        }
+        return overallScore;
+    }
+
     // REQUIRES: A contestant.
     // EFFECTS: Returns true if contestant c is already in the cast, otherwise returns false.
     public boolean contains(Contestant c) {
@@ -91,6 +100,10 @@ public class Cast implements Writable {
     // EFFECTS: Gets all the contestants in a Cast.
     public List<Contestant> getContestants() {
         return Collections.unmodifiableList(cast);
+    }
+
+    public String castToStringScore() {
+        return "Name: " + getCastName() + ", Score: " + calculateCastScore();
     }
 }
 

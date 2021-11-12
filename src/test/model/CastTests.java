@@ -104,4 +104,13 @@ class CastTests {
         assertEquals("Gabbi's Cast", testCast.getCastName());
     }
 
+    @Test
+    public void calculateCastScoreTest() {
+        testCast.add(c2);
+        testCast.add(c3);
+        testCast.add(c4);
+        assertEquals(7, testCast.calculateCastScore());
+
+    }
+
     }

@@ -47,7 +47,11 @@ public class Contestant implements Writable {
     }
 
     public int getScore() {
-        return score;
+        if (status.equals("Ineligible")) {
+            return 0;
+        } else {
+            return score;
+        }
     }
 
     public String toString() {

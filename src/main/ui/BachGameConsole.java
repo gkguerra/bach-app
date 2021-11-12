@@ -1,13 +1,14 @@
 package ui;
 
-import model.Contestant;
 import model.Cast;
+import model.Contestant;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Scanner;
+import java.util.*;
 
 // This class references code from this TellerApp repository.
 // Link: https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
@@ -71,7 +72,7 @@ public class BachGameConsole {
             displayHome();
             selection = userInput.next();
 
-            if (selection.equals("3")) {
+            if (selection.equals("4")) {
                 System.out.println("Would you like to save your cast? (yes/no)");
                 selection = userInput.next();
                 if (selection.equals("yes")) {
@@ -94,6 +95,9 @@ public class BachGameConsole {
             System.out.println("Here is a list of all the members of your cast!");
             displayCast();
             changeTeam();
+        } else if (selection.equals("3")) {
+            System.out.println("Here is the leaderboard! Look for your name!");
+            displayLeaderboard();
         } else {
             System.out.println("Selection is not valid.");
         }
@@ -106,7 +110,8 @@ public class BachGameConsole {
         System.out.println("HOME MENU:");
         System.out.println("\tEnter 1 to view all contestants.");
         System.out.println("\tEnter 2 to view or change your cast.");
-        System.out.println("\tEnter 3 to quit.");
+        System.out.println("\tEnter 3 to view leaderboard.");
+        System.out.println("\tEnter 4 to quit.");
 
     }
 
@@ -240,4 +245,31 @@ public class BachGameConsole {
             System.out.println("Unable to write to file " + JSON_STORE);
         }
     }
+
+    // This method references code from this StackOverflow Post.
+    // Link: https://stackoverflow.com/questions/5694385/getting-the-filenames-of-all-files-in-a-folder
+    // ADD SIGNATURE and TESTS
+    private void displayLeaderboard() {
+        File folder = new File("./data");
+        File[] listOfFiles = folder.listFiles();
+        List<Cast> listOfCasts = new ArrayList<>();
+        List<String> listOfCastRows = new ArrayList<>();
+
+        for (File f : listOfFiles) {
+            jsonReader = new JsonReader("./data/" + f.getName());
+            if (f.getName().contains("test") || f.getName().contains("tobs")) {
+                continue;
+            } else {
+                try {
+                    listOfCasts.add(jsonReader.read());
+                } catch (IOException e) {
+                    System.out.println("IO Exception thrown.");
+                }
+            }
+        }
+
+        listOfCasts.sort(Comparator.comparing(Cast::calculateCastScore));
+        System.out.println(listOfCasts);
+    }
+
 }

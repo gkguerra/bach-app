@@ -43,7 +43,7 @@ public class JsonReader {
     // EFFECTS: Parses Cast from JSON object and returns it
     private Cast parseCast(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
-        Cast cast = new Cast("My Cast", 1234);
+        Cast cast = new Cast(name, 1234);
         addContestants(cast, jsonObject);
         return cast;
     }
