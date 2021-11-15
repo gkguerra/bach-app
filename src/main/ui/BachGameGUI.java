@@ -1,10 +1,12 @@
 package ui;
 
-import javax.swing.*;
-import model.Cast;
+import model.BachGame;
 import model.Contestant;
-import persistence.JsonReader;
-import persistence.JsonWriter;
+import ui.screens.CastScreen;
+import ui.screens.ContestantScreen;
+import ui.screens.AboutScreen;
+
+import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -14,46 +16,63 @@ import java.awt.event.MouseEvent;
 
 
 public class BachGameGUI extends JFrame {
+    public static final int ABOUT_INDEX = 0;
+    public static final int CONT_INDEX = 1;
+    public static final int CAST_INDEX = 2;
+    public static final int LEAD_INDEX = 3;
+
     private static final int WIDTH = 1200;
     private static final int HEIGHT = 1000;
+
     private static final Color PINK = new Color(255,192,203);
-    private JDesktopPane desktop;
+
+    private JTabbedPane sidebar;
+    private BachGame bachGame;
 
     public BachGameGUI() {
-
-        desktop = new JDesktopPane();
-        desktop.addMouseListener(new DesktopFocusAction());
-        desktop.setBackground(Color.PINK);
-        ImageIcon image = new ImageIcon("./data/images/imageLogo.png");
-        JLabel imageLabel = new JLabel(image);
-        imageLabel.setVisible(true);
-        imageLabel.setBounds(5, 5, 20, 20);
-        desktop.add(imageLabel);
-        desktop.setLayout(new FlowLayout());
-
-
-        setContentPane(desktop);
-        setBackground(PINK);
-        setTitle("BachApp");
+        super("BachApp");
         setSize(WIDTH, HEIGHT);
-
+        setBackground(PINK);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         centreOnScreen();
+
+        bachGame = new BachGame();
+
+        sidebar = new JTabbedPane();
+        sidebar.setTabPlacement(JTabbedPane.LEFT);
+
+        loadTabs();
+        add(sidebar);
+
         setVisible(true);
-
-    }
-
-    private class DesktopFocusAction extends MouseAdapter {
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            BachGameGUI.this.requestFocusInWindow();
-        }
     }
 
     private void centreOnScreen() {
         int width = Toolkit.getDefaultToolkit().getScreenSize().width;
         int height = Toolkit.getDefaultToolkit().getScreenSize().height;
         setLocation((width - getWidth()) / 2, (height - getHeight()) / 2);
+    }
+
+    //EFFECTS: returns BachGame object controlled by this UI
+    public BachGame getBachGame() {
+        return bachGame;
+    }
+
+    public void loadTabs() {
+        JPanel aboutScreen = new AboutScreen(this);
+        JPanel contestantScreen = new ContestantScreen(this);
+        JPanel castScreen = new CastScreen(this);
+        sidebar.add(aboutScreen, ABOUT_INDEX);
+        sidebar.setTitleAt(ABOUT_INDEX, "About the Bachelorette");
+        sidebar.add(contestantScreen, CONT_INDEX);
+        sidebar.setTitleAt(CONT_INDEX, "Contestants");
+        sidebar.add(castScreen, CAST_INDEX);
+        sidebar.setTitleAt(CAST_INDEX, "Edit Cast");
+    }
+
+    //EFFECTS: returns sidebar of this UI
+    public JTabbedPane getTabbedPane() {
+        return sidebar;
     }
 
 }
