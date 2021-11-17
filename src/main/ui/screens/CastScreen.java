@@ -2,7 +2,7 @@ package ui.screens;
 
 import model.Cast;
 import model.Contestant;
-import ui.BachGameGUI;
+import ui.MainJFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,7 +35,7 @@ public class CastScreen extends Screen {
     JPanel castPanel = new JPanel();
     JLabel castLabel = new JLabel("Your cast is: ");
 
-    public CastScreen(BachGameGUI controller) {
+    public CastScreen(MainJFrame controller) {
         super(controller);
 
         GridLayout layout = new GridLayout(5,5);
@@ -71,6 +71,7 @@ public class CastScreen extends Screen {
         public void actionPerformed(ActionEvent e) {
             String oldText;
             String newText;
+            String rejectText;
             Contestant addThisContestant = (Contestant) cb.getSelectedItem();
             oldText = castLabel.getText();
 
@@ -78,12 +79,13 @@ public class CastScreen extends Screen {
                 cast.addContestant(addThisContestant);
                 System.out.println(addThisContestant); // TO TEST OUTPUT
                 newText = oldText + " " + addThisContestant.getName();
+                castLabel.setText(newText);
             } else {
-                newText = "This contestant cannot be added. You have either already added them or your cast is full!";
-                // ADD BACK BUTTON
+                rejectText = "Contestant not added. You have either already added them or your cast is full!";
+                castLabel.setText(rejectText);
+                // ADD BACK BUTTON OR BUILD A POP-UP TO DISPLAY THIS MESSAGE THAT CAN BE CLOSED
             }
 
-            castLabel.setText(newText);
             castPanel.repaint();
         }
     }

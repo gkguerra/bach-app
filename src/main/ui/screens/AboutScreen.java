@@ -1,6 +1,6 @@
 package ui.screens;
 
-import ui.BachGameGUI;
+import ui.MainJFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +15,7 @@ public class AboutScreen extends Screen {
             + " proposal from one of them. There is romance, drama, love, and lots of laughs!";
 
 
-    public AboutScreen(BachGameGUI controller) {
+    public AboutScreen(MainJFrame controller) {
         super(controller);
 
         GridLayout layout = new GridLayout(1,1);

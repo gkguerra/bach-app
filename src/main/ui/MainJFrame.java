@@ -8,15 +8,17 @@ import ui.screens.AboutScreen;
 import javax.swing.*;
 
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 // https://stackoverflow.com/questions/20098124/displaying-an-image-in-a-jframe
+// https://stackoverflow.com/questions/15198549/popup-for-jframe-close-button
+// https://stackoverflow.com/questions/15198549/popup-for-jframe-close-button
 
-
-public class BachGameGUI extends JFrame {
+public class MainJFrame extends JFrame {
     public static final int ABOUT_INDEX = 0;
     public static final int CONT_INDEX = 1;
     public static final int CAST_INDEX = 2;
-    public static final int QUIT_INDEX = 3;
     private static final int WIDTH = 1200;
     private static final int HEIGHT = 1000;
     private static final Color PINK = new Color(255,192,203);
@@ -24,17 +26,18 @@ public class BachGameGUI extends JFrame {
     private JTabbedPane topBar;
     private BachGame bachGame;
 
-    QuitButton quitButton = new QuitButton();
+    ImageIcon logo = new ImageIcon("data/images/rose.jpeg");
 
-    public BachGameGUI() {
+    public MainJFrame() {
         super("BachApp");
         this.setSize(WIDTH, HEIGHT);
         this.setBackground(PINK);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         centreOnScreen();
         bachGame = new BachGame();
         topBar = new JTabbedPane();
         topBar.setTabPlacement(JTabbedPane.TOP);
+        addWindowListener(new SaveOrQuit());
         loadTabs();
         add(topBar);
         setVisible(true);
@@ -61,13 +64,25 @@ public class BachGameGUI extends JFrame {
         topBar.setTitleAt(CONT_INDEX, "CONTESTANTS");
         topBar.add(castScreen, CAST_INDEX);
         topBar.setTitleAt(CAST_INDEX, "EDIT CAST");
-        topBar.add(quitButton, QUIT_INDEX);
-        topBar.setTitleAt(QUIT_INDEX, "QUIT");
     }
 
     //EFFECTS: returns sidebar of this UI
     public JTabbedPane getTabbedPane() {
         return topBar;
+    }
+
+    private class SaveOrQuit extends WindowAdapter {
+        public void windowClosing(WindowEvent e) {
+            int option = JOptionPane.showOptionDialog(MainJFrame.this,
+                    "Would you like to save the state of your account?", "Exit dialog",
+                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, logo, null,
+                    null);
+            if (option == JOptionPane.YES_OPTION) {
+                // ALL THE SAVE STUFF
+            } else if (option == JOptionPane.NO_OPTION) {
+                System.exit(0);
+            }
+        }
     }
 
 }
