@@ -1,6 +1,7 @@
 package ui;
 
 import model.BachGame;
+import model.Cast;
 import ui.screens.CastScreen;
 import ui.screens.ContestantScreen;
 import ui.screens.AboutScreen;
@@ -13,7 +14,6 @@ import java.awt.event.WindowEvent;
 
 // https://stackoverflow.com/questions/20098124/displaying-an-image-in-a-jframe
 // https://stackoverflow.com/questions/15198549/popup-for-jframe-close-button
-// https://stackoverflow.com/questions/15198549/popup-for-jframe-close-button
 
 public class MainJFrame extends JFrame {
     public static final int ABOUT_INDEX = 0;
@@ -22,6 +22,7 @@ public class MainJFrame extends JFrame {
     private static final int WIDTH = 1200;
     private static final int HEIGHT = 1000;
     private static final Color PINK = new Color(255,192,203);
+    private Cast cast;
 
     private JTabbedPane topBar;
     private BachGame bachGame;
@@ -31,7 +32,7 @@ public class MainJFrame extends JFrame {
     public MainJFrame() {
         super("BachApp");
         this.setSize(WIDTH, HEIGHT);
-        this.setBackground(PINK);
+        this.getContentPane().setBackground(PINK);
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         centreOnScreen();
         bachGame = new BachGame();
@@ -49,10 +50,10 @@ public class MainJFrame extends JFrame {
         setLocation((width - getWidth()) / 2, (height - getHeight()) / 2);
     }
 
-    //EFFECTS: returns BachGame object controlled by this UI
-    public BachGame getBachGame() {
-        return bachGame;
-    }
+//    //EFFECTS: returns BachGame object controlled by this UI
+//    public BachGame getBachGame() {
+//        return bachGame;
+//    }
 
     public void loadTabs() {
         JPanel aboutScreen = new AboutScreen(this);
@@ -74,7 +75,7 @@ public class MainJFrame extends JFrame {
     private class SaveOrQuit extends WindowAdapter {
         public void windowClosing(WindowEvent e) {
             int option = JOptionPane.showOptionDialog(MainJFrame.this,
-                    "Would you like to save the state of your account?", "Exit dialog",
+                    "Would you like to save the state of your account?", "BachApp",
                     JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, logo, null,
                     null);
             if (option == JOptionPane.YES_OPTION) {
@@ -84,5 +85,4 @@ public class MainJFrame extends JFrame {
             }
         }
     }
-
 }
