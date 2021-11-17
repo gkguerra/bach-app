@@ -6,23 +6,44 @@ import ui.BachGameGUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+// https://stackoverflow.com/questions/11428573/write-a-string-on-a-jpanel-centered/11428834
+// https://stackoverflow.com/questions/4123230/add-jbuttons-to-jpanel
 
 public class CastScreen extends Screen {
 
     private static final String GREETING = "Here are all the current members of your cast:";
     private JLabel message;
-    private JLabel emptyMessage;
-    Cast cast;
+    private ActionListener addAction = new AddAction();
+    Cast cast = new Cast("Gabbi", 123);
+    JButton addButton = new JButton(("Add"));
+
+    Contestant c1 = new Contestant("Alec", "North Charleston", 2, 0, "Eligible");
+    Contestant c2 = new Contestant("Brandon", "Portland", 0, 0, "Eligible");
+    Contestant c3 = new Contestant("Bryan", "Chicago", 2, 3, "Eligible");
+    Contestant c4 = new Contestant("Casey", "Miami Beach", 2, 1, "Eligible");
+    Contestant c5 = new Contestant("Chris", "Halifax", 2, 3, "Eligible");
+    Contestant c6 = new Contestant("Clayton", "Columbia", 2, 1, "Eligible");
+    Contestant c7 = new Contestant("Daniel", "Austin", 2, 3, "Eligible");
+    Contestant c8 = new Contestant("Edward", "Los Angeles", 2, 1, "Eligible");
+
+    Contestant[] contestants = {c1, c2, c3, c4, c5, c6, c7, c8};
+    JComboBox cb = new JComboBox((contestants));
+
+    JPanel castPanel = new JPanel();
+    JLabel castLabel = new JLabel("Your cast is: ");
 
     public CastScreen(BachGameGUI controller) {
         super(controller);
 
-        GridLayout layout = new GridLayout(3,1);
+        GridLayout layout = new GridLayout(5,5);
         setLayout(layout);
 
         placeMessage();
-        placeCast();
         placeButtons();
+        placeCastPanel();
     }
 
     //EFFECTS: creates greeting at top of console
@@ -32,29 +53,38 @@ public class CastScreen extends Screen {
         this.add(message);
     }
 
-    private void placeCast() {
-        if (cast == null) {
-            emptyMessage = new JLabel("Your cast is empty - add some contestants to your cast below!");
-            this.add(emptyMessage);
-        } else {
-            for (Contestant c : cast.getContestants()) {
-                new JLabel(c.getName());
-                this.add(message);
+    private void placeButtons() {
+        this.add(cb);
+        this.add(addButton);
+        addButton.addActionListener(addAction);
+    }
+
+    private void placeCastPanel() {
+        castPanel.add(castLabel);
+        this.add(castPanel);
+    }
+
+    //LEARN HOW TO CAST TO OBJECTS
+    // https://stackoverflow.com/questions/24057273/how-to-access-an-objects-parent-object-in-java
+    // https://examples.javacodegeeks.com/desktop-java/swing/java-swing-tutorial-beginners/
+    private class AddAction implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            String oldText;
+            String newText;
+            Contestant addThisContestant = (Contestant) cb.getSelectedItem();
+            oldText = castLabel.getText();
+
+            if (cast.size() < 3 && !cast.contains(addThisContestant)) {
+                cast.addContestant(addThisContestant);
+                System.out.println(addThisContestant); // TO TEST OUTPUT
+                newText = oldText + " " + addThisContestant.getName();
+            } else {
+                newText = "This contestant cannot be added. You have either already added them or your cast is full!";
+                // ADD BACK BUTTON
             }
+
+            castLabel.setText(newText);
+            castPanel.repaint();
         }
     }
-
-    private void placeButtons() {
-
-        JButton addButton = new JButton(("Add"));
-        JButton removeButton = new JButton(("Remove"));
-
-        this.add(addButton);
-        this.add(removeButton);
-
-        removeButton.addActionListener(e -> {
-            getController().getBachGame();
-        });
-    }
 }
-

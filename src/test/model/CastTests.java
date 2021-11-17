@@ -38,16 +38,16 @@ class CastTests {
 
     @Test
     public void addToEmptyTest() {
-        testCast.add(c1);
+        testCast.addContestant(c1);
         assertEquals(1, testCast.size());
         assertTrue(testCast.contains(c1));
     }
 
     @Test
     public void addManyTest() {
-        testCast.add(c1);
-        testCast.add(c2);
-        testCast.add(c3);
+        testCast.addContestant(c1);
+        testCast.addContestant(c2);
+        testCast.addContestant(c3);
         assertEquals(3, testCast.size());
         assertTrue(testCast.contains(c1));
         assertTrue(testCast.contains(c2));
@@ -56,10 +56,10 @@ class CastTests {
 
     @Test
     public void addToFullTest() {
-        testCast.add(c1);
-        testCast.add(c2);
-        testCast.add(c3);
-        testCast.add(c4);
+        testCast.addContestant(c1);
+        testCast.addContestant(c2);
+        testCast.addContestant(c3);
+        testCast.addContestant(c4);
         assertEquals(3, testCast.size());
         assertTrue(testCast.contains(c1));
         assertTrue(testCast.contains(c2));
@@ -69,16 +69,16 @@ class CastTests {
 
     @Test
     public void addButAlreadyThereTest() {
-        testCast.add(c1);
-        testCast.add(c1);
+        testCast.addContestant(c1);
+        testCast.addContestant(c1);
         assertTrue(testCast.contains(c1));
         assertEquals(1, testCast.size());
     }
 
     @Test
     public void removeTest() {
-        testCast.add(c1);
-        testCast.add(c2);
+        testCast.addContestant(c1);
+        testCast.addContestant(c2);
         assertEquals(2, testCast.size());
         testCast.remove(c2);
         assertEquals(1, testCast.size());
@@ -86,7 +86,7 @@ class CastTests {
 
     @Test
     public void removeButNotThereTest() {
-        testCast.add(c1);
+        testCast.addContestant(c1);
         testCast.remove(c2);
         assertEquals(1, testCast.size());
         assertTrue(testCast.contains(c1));
@@ -106,9 +106,9 @@ class CastTests {
 
     @Test
     public void calculateCastScoreTest() {
-        testCast.add(c2);
-        testCast.add(c3);
-        testCast.add(c4);
+        testCast.addContestant(c2);
+        testCast.addContestant(c3);
+        testCast.addContestant(c4);
         assertEquals(7, testCast.calculateCastScore());
 
     }

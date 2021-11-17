@@ -1,7 +1,6 @@
 package ui;
 
 import model.BachGame;
-import model.Contestant;
 import ui.screens.CastScreen;
 import ui.screens.ContestantScreen;
 import ui.screens.AboutScreen;
@@ -9,8 +8,6 @@ import ui.screens.AboutScreen;
 import javax.swing.*;
 
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 // https://stackoverflow.com/questions/20098124/displaying-an-image-in-a-jframe
 
@@ -19,31 +16,27 @@ public class BachGameGUI extends JFrame {
     public static final int ABOUT_INDEX = 0;
     public static final int CONT_INDEX = 1;
     public static final int CAST_INDEX = 2;
-    public static final int LEAD_INDEX = 3;
-
+    public static final int QUIT_INDEX = 3;
     private static final int WIDTH = 1200;
     private static final int HEIGHT = 1000;
-
     private static final Color PINK = new Color(255,192,203);
 
-    private JTabbedPane sidebar;
+    private JTabbedPane topBar;
     private BachGame bachGame;
+
+    QuitButton quitButton = new QuitButton();
 
     public BachGameGUI() {
         super("BachApp");
-        setSize(WIDTH, HEIGHT);
-        setBackground(PINK);
+        this.setSize(WIDTH, HEIGHT);
+        this.setBackground(PINK);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         centreOnScreen();
-
         bachGame = new BachGame();
-
-        sidebar = new JTabbedPane();
-        sidebar.setTabPlacement(JTabbedPane.LEFT);
-
+        topBar = new JTabbedPane();
+        topBar.setTabPlacement(JTabbedPane.TOP);
         loadTabs();
-        add(sidebar);
-
+        add(topBar);
         setVisible(true);
     }
 
@@ -62,17 +55,19 @@ public class BachGameGUI extends JFrame {
         JPanel aboutScreen = new AboutScreen(this);
         JPanel contestantScreen = new ContestantScreen(this);
         JPanel castScreen = new CastScreen(this);
-        sidebar.add(aboutScreen, ABOUT_INDEX);
-        sidebar.setTitleAt(ABOUT_INDEX, "About the Bachelorette");
-        sidebar.add(contestantScreen, CONT_INDEX);
-        sidebar.setTitleAt(CONT_INDEX, "Contestants");
-        sidebar.add(castScreen, CAST_INDEX);
-        sidebar.setTitleAt(CAST_INDEX, "Edit Cast");
+        topBar.add(aboutScreen, ABOUT_INDEX);
+        topBar.setTitleAt(ABOUT_INDEX, "ABOUT");
+        topBar.add(contestantScreen, CONT_INDEX);
+        topBar.setTitleAt(CONT_INDEX, "CONTESTANTS");
+        topBar.add(castScreen, CAST_INDEX);
+        topBar.setTitleAt(CAST_INDEX, "EDIT CAST");
+        topBar.add(quitButton, QUIT_INDEX);
+        topBar.setTitleAt(QUIT_INDEX, "QUIT");
     }
 
     //EFFECTS: returns sidebar of this UI
     public JTabbedPane getTabbedPane() {
-        return sidebar;
+        return topBar;
     }
 
 }

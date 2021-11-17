@@ -51,8 +51,8 @@ public class JsonWriterTest extends JsonTest {
     void testWriterGeneralCast() {
         try {
             Cast c = new Cast("My Cast", 123);
-            c.add(new Contestant("Mark", "LA",1,1,"Eligible"));
-            c.add(new Contestant("Twain", "NYC",1,1,"Eligible"));
+            c.addContestant(new Contestant("Mark", "LA",1,1,"Eligible"));
+            c.addContestant(new Contestant("Twain", "NYC",1,1,"Eligible"));
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralCast.json");
             writer.open();
             writer.write(c);

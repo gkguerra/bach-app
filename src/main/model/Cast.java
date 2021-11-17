@@ -42,7 +42,7 @@ public class Cast implements Writable {
     // REQUIRES: A contestant.
     // MODIFIES: This.
     // EFFECTS: Contestant c is added to the Cast if they're not already in it.
-    public void add(Contestant c) {
+    public void addContestant(Contestant c) {
         if ((!cast.contains(c)) && (cast.size() < 3)) {
             cast.add(c);
         }
@@ -105,5 +105,6 @@ public class Cast implements Writable {
     public String castToStringScore() {
         return "Name: " + getCastName() + ", Score: " + calculateCastScore();
     }
+
 }
 

@@ -10,18 +10,17 @@ public class ContestantScreen extends Screen {
     private static final String INIT_GREETING = "Here are all the contestants competing for Michelle's heart!";
     private JLabel greeting;
 
-    Contestant c1 = new Contestant("Alec", "North Charleston", 2, 0, "Eligible");
-    Contestant c2 = new Contestant("Brandon", "Portland", 0, 0, "Eligible");
-    Contestant c3 = new Contestant("Bryan", "Chicago", 2, 3, "Eligible");
-    Contestant c4 = new Contestant("Casey", "Miami Beach", 2, 1, "Eligible");
-    Contestant c5 = new Contestant("Chris", "Halifax", 2, 3, "Eligible");
-    Contestant c6 = new Contestant("Clayton", "Columbia", 2, 1, "Eligible");
-    Contestant c7 = new Contestant("Daniel", "Austin", 2, 3, "Eligible");
-    Contestant c8 = new Contestant("Edward", "Los Angeles", 2, 1, "Eligible");
+    ImageIcon alec = new ImageIcon("data/images/alec.jpeg");
+    ImageIcon brandon = new ImageIcon("data/images/brandon.png");
+    ImageIcon bryan = new ImageIcon("data/images/bryan.jpeg");
+    ImageIcon casey = new ImageIcon("data/images/casey.jpeg");
+    ImageIcon chris = new ImageIcon("data/images/chris.jpeg");
+    ImageIcon clayton = new ImageIcon("data/images/clayton.jpeg");
+    ImageIcon daniel = new ImageIcon("data/images/daniel.jpeg");
+    ImageIcon edward = new ImageIcon("data/images/edward.jpeg");
 
     public ContestantScreen(BachGameGUI controller) {
         super(controller);
-
         placeGreeting();
         displayContestants();
     }
@@ -36,13 +35,13 @@ public class ContestantScreen extends Screen {
     private void displayContestants() {
         GridLayout layout = new GridLayout(3,3);
         setLayout(layout);
-        this.add(new JButton("Alec"));
-        this.add(new JButton("Brandon"));
-        this.add(new JButton("Bryan"));
-        this.add(new JButton("Casey"));
-        this.add(new JButton("Chris"));
-        this.add(new JButton("Clayton"));
-        this.add(new JButton("Daniel"));
-        this.add(new JButton("Edward"));
+        this.add(new JButton("Alec", alec));
+        this.add(new JButton("Brandon", brandon));
+        this.add(new JButton("Bryan", bryan));
+        this.add(new JButton("Casey", casey));
+        this.add(new JButton("Chris", chris));
+        this.add(new JButton("Clayton", clayton));
+        this.add(new JButton("Daniel", daniel));
+        this.add(new JButton("Edward", edward));
     }
 }

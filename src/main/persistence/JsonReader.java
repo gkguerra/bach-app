@@ -68,6 +68,6 @@ public class JsonReader {
         String status = jsonObject.getString("status");
 
         Contestant c = new Contestant(name, hometown, roses, dates, status);
-        cast.add(c);
+        cast.addContestant(c);
     }
 }

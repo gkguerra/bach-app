@@ -183,7 +183,7 @@ public class BachGameConsole {
         }
 
         if ((cast.size() < 3) && (!cast.contains(c))) {
-            cast.add(c);
+            cast.addContestant(c);
             System.out.println("Here is your new cast list.");
             displayCast();
         }

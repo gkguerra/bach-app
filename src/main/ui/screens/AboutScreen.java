@@ -7,7 +7,6 @@ import java.awt.*;
 
 public class AboutScreen extends Screen {
 
-    private JLabel description;
     private static final String aboutDescription = "The Bachelorette is a reality tv dating show in which 30 "
             + " eligible male bachelors compete to find love with a chosen bachelorette. Each week, the "
             + " bachelorette goes on dates with the bachelors and eliminates those she does not have a connection with "
@@ -28,10 +27,8 @@ public class AboutScreen extends Screen {
     // https://stackoverflow.com/questions/26420428/how-to-word-wrap-text-in-jlabel
     //EFFECTS: creates greeting at top of console
     private void layText() {
-        // description = new JLabel(aboutDescription, SwingConstants.CENTER);
-        // description.setSize(WIDTH, HEIGHT / 3);
-
         JTextArea description = new JTextArea(20, 20);
+        description.setEditable(false);
         description.setText(aboutDescription);
         description.setWrapStyleWord(true);
         description.setLineWrap(true);
