@@ -79,7 +79,7 @@ public class MainJFrame extends JFrame {
                     JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, logo, null,
                     null);
             if (option == JOptionPane.YES_OPTION) {
-                // ALL THE SAVE STUFF
+                // SAVE STUFF
             } else if (option == JOptionPane.NO_OPTION) {
                 System.exit(0);
             }
