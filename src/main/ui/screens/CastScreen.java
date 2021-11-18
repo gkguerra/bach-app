@@ -2,7 +2,7 @@ package ui.screens;
 
 import model.Cast;
 import model.Contestant;
-import ui.MainJFrame;
+import ui.StartJFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,7 +35,7 @@ public class CastScreen extends Screen {
     JPanel castPanel = new JPanel();
     JLabel castLabel = new JLabel("Your cast is: ");
 
-    public CastScreen(MainJFrame controller) {
+    public CastScreen(StartJFrame controller) {
         super(controller);
 
         GridLayout layout = new GridLayout(5,5);

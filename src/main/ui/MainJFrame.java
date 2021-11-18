@@ -1,3 +1,4 @@
+/*
 package ui;
 
 import model.BachGame;
@@ -30,7 +31,7 @@ public class MainJFrame extends JFrame {
     ImageIcon logo = new ImageIcon("data/images/rose.jpeg");
 
     public MainJFrame() {
-        super("BachApp");
+        super();
         this.setSize(WIDTH, HEIGHT);
         this.getContentPane().setBackground(PINK);
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -85,4 +86,8 @@ public class MainJFrame extends JFrame {
             }
         }
     }
+
+
+
 }
+*/

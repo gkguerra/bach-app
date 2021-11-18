@@ -1,6 +1,6 @@
 package ui.screens;
 
-import ui.MainJFrame;
+import ui.StartJFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +18,7 @@ public class ContestantScreen extends Screen {
     ImageIcon daniel = new ImageIcon("data/images/daniel.jpeg");
     ImageIcon edward = new ImageIcon("data/images/edward.jpeg");
 
-    public ContestantScreen(MainJFrame controller) {
+    public ContestantScreen(StartJFrame controller) {
         super(controller);
         placeGreeting();
         displayContestants();
