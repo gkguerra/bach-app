@@ -9,11 +9,16 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// This class and methods within this class references code and information from the following sources:
 // https://stackoverflow.com/questions/11428573/write-a-string-on-a-jpanel-centered/11428834
 // https://stackoverflow.com/questions/4123230/add-jbuttons-to-jpanel
 // https://docs.oracle.com/javase/tutorial/uiswing/layout/gridbag.html
-// https://www.tutorialspoint.com/swingexamples/add_border_to_panel.htm
+// https://www.tutorialspoint.com/swingexamples/add_border_to_panel.html
+// https://stackoverflow.com/questions/24057273/how-to-access-an-objects-parent-object-in-java
+// https://examples.javacodegeeks.com/desktop-java/swing/java-swing-tutorial-beginners/
+// Link: https://github.students.cs.ubc.ca/CPSC210/LongFormProblemStarters.git
 
+// This class represents a CastScreen which extends Screen and allows the user to edit their Cast.
 public class CastScreen extends Screen {
 
     private static final Color PINK = new Color(255,192,203);
@@ -40,6 +45,7 @@ public class CastScreen extends Screen {
     JLabel castLabel = new JLabel();
     ImageIcon editCast = new ImageIcon("data/images/editcast.png");
 
+    // EFFECTS: Creates a CastScreen with the BachGameJFrame as a controller
     public CastScreen(BachGameJFrame controller) {
         super(controller);
 
@@ -54,6 +60,8 @@ public class CastScreen extends Screen {
         placeCastPanel();
     }
 
+    // MODIFIES: This.
+    // EFFECTS: Places the header image in GridBagLayout with appropriate constraints
     private void placeHeader() {
         GridBagConstraints constraints = new GridBagConstraints();
         JLabel top = new JLabel(editCast, JLabel.CENTER);
@@ -68,6 +76,8 @@ public class CastScreen extends Screen {
         this.add(top, constraints);
     }
 
+    // MODIFIES: This.
+    // EFFECTS: Places the selection box in GridBagLayout with appropriate constraints
     private void placeComboBox() {
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.HORIZONTAL;
@@ -80,6 +90,8 @@ public class CastScreen extends Screen {
         this.add(cb, constraints);
     }
 
+    // MODIFIES: This.
+    // EFFECTS: Places the view button in GridBagLayout with appropriate constraints
     private void placeViewButton() {
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.HORIZONTAL;
@@ -94,6 +106,8 @@ public class CastScreen extends Screen {
         this.add(viewButton, constraints);
     }
 
+    // MODIFIES: This.
+    // EFFECTS: Places the add button in GridBagLayout with appropriate constraints
     private void placeAddButton() {
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.HORIZONTAL;
@@ -108,6 +122,8 @@ public class CastScreen extends Screen {
         this.add(addButton, constraints);
     }
 
+    // MODIFIES: This.
+    // EFFECTS: Places the remove button in GridBagLayout with appropriate constraints
     private void placeRemoveButton() {
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.HORIZONTAL;
@@ -122,6 +138,8 @@ public class CastScreen extends Screen {
         this.add(removeButton, constraints);
     }
 
+    // MODIFIES: This.
+    // EFFECTS: Places the panel that displays the cast in GridBagLayout with appropriate constraints
     private void placeCastPanel() {
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.HORIZONTAL;
@@ -138,9 +156,9 @@ public class CastScreen extends Screen {
         this.add(castPanel, constraints);
     }
 
-    //LEARN HOW TO CAST
-    // https://stackoverflow.com/questions/24057273/how-to-access-an-objects-parent-object-in-java
-    // https://examples.javacodegeeks.com/desktop-java/swing/java-swing-tutorial-beginners/
+    // REQUIRES: The press of the add button.
+    // MODIFIES: This, castLabel and castPanel
+    // EFFECTS: Adds a contestant and displays a message confirming the contestant is added.
     private class AddAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             Cast masterCast = BachGameJFrame.getMasterCast();
@@ -161,6 +179,9 @@ public class CastScreen extends Screen {
         }
     }
 
+    // REQUIRES: The press of the view button.
+    // MODIFIES: This, castLabel and castPanel
+    // EFFECTS: Displays the contestants that are currently on the cast.
     private class ViewAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             Cast masterCast = BachGameJFrame.getMasterCast();
@@ -173,6 +194,9 @@ public class CastScreen extends Screen {
         }
     }
 
+    // REQUIRES: The press of the remove button.
+    // MODIFIES: This, castLabel and castPanel
+    // EFFECTS: Removes a contestant and displays a message confirming the contestant is removed.
     private class RemoveAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             Cast masterCast = BachGameJFrame.getMasterCast();
@@ -188,6 +212,5 @@ public class CastScreen extends Screen {
             castPanel.repaint();
         }
     }
-
 
 }

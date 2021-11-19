@@ -17,10 +17,13 @@ import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+// This class and methods within this class references code and information from the following sources:
 // https://stackoverflow.com/questions/16390503/java-swing-getting-input-from-a-jtextfield
 // https://www.geeksforgeeks.org/java-swing-jtextarea/
 // https://stackoverflow.com/questions/30369197/switch-between-multiple-jframes
+// https://github.students.cs.ubc.ca/CPSC210/LongFormProblemStarters.git
 
+// This is the main GUI frame for BachApp.
 public class BachGameJFrame extends JFrame {
 
     // DESIGN
@@ -56,7 +59,7 @@ public class BachGameJFrame extends JFrame {
     ImageIcon bachLogo = new ImageIcon("data/images/bachlogo.png");
     private JLabel image;
 
-    // START THE APPLICATION
+    // EFFECTS: Constructs the application window with the appropriate components.
     public BachGameJFrame() {
         super("BachApp");
         this.setSize(WIDTH, HEIGHT);
@@ -72,13 +75,16 @@ public class BachGameJFrame extends JFrame {
         addEnterButtons();
     }
 
-
+    // MODIFIES: This.
+    // EFFECTS: Adds the header image to the BachGameJFrame.
     private void addImage() {
         image = new JLabel(bachLogo, JLabel.CENTER);
         image.setSize(WIDTH, HEIGHT / 3);
         this.add(image);
     }
 
+    // MODIFIES: This.
+    // EFFECTS: Switches the components of the BachGameJFrame to reflect that the user has logged in.
     private void switchToMain() {
         this.getContentPane().remove(signUpButton);
         this.getContentPane().remove(logInButton);
@@ -91,10 +97,12 @@ public class BachGameJFrame extends JFrame {
         topBar.setTabPlacement(JTabbedPane.TOP);
         this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         this.add(topBar);
-        this.loadTabs();
+        this.loadScreens();
     }
 
-    public void loadTabs() {
+    // MODIFIES: This.
+    // EFFECTS: Loads the three different screens into the screen bar at the top.
+    public void loadScreens() {
         JPanel aboutScreen = new AboutScreen(this);
         JPanel contestantScreen = new ContestantScreen(this);
         topBar.add(aboutScreen, ABOUT_INDEX);
@@ -105,11 +113,13 @@ public class BachGameJFrame extends JFrame {
         topBar.setTitleAt(CAST_INDEX, "EDIT CAST");
     }
 
+    // MODIFIES: This.
+    // EFFECTS: Allows the user to save or not save their data when quitting the application.
     private class SaveOrQuit extends WindowAdapter {
         public void windowClosing(WindowEvent e) {
             int option = JOptionPane.showOptionDialog(BachGameJFrame.this,
                     "Would you like to save the state of your account?", "BachApp",
-                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, logo, null,
+                    JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, logo, null,
                     null);
             if (option == JOptionPane.YES_OPTION) {
                 saveCast();
@@ -120,12 +130,16 @@ public class BachGameJFrame extends JFrame {
         }
     }
 
+    // MODIFIES: This.
+    // EFFECTS: Centres the GUI on the computer screen.
     private void centreOnScreen() {
         int width = Toolkit.getDefaultToolkit().getScreenSize().width;
         int height = Toolkit.getDefaultToolkit().getScreenSize().height;
         setLocation((width - getWidth()) / 2, (height - getHeight()) / 2);
     }
 
+    // MODIFIES: This.
+    // EFFECT: Adds the log-in and sign-up buttons to the BachGameJFrame.
     public void addEnterButtons() {
         logInButton.setSize(WIDTH, HEIGHT / 3);
         this.add(logInButton);
@@ -135,6 +149,8 @@ public class BachGameJFrame extends JFrame {
         signUpButton.addActionListener(signUpAction);
     }
 
+    // MODIFIES: This.
+    // EFFECTS: When login is pressed, prompts user to enter their name and loads the JSON file for their account.
     private class LogInAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             JTextArea enterName = new JTextArea("Please enter your account name here:",1, 1);
@@ -154,6 +170,8 @@ public class BachGameJFrame extends JFrame {
         }
     }
 
+    // MODIFIES: This.
+    // EFFECTS: When login is pressed, prompts user to enter their name and creates a JSON file for the new account.
     private class SignUpAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             JTextArea enterName = new JTextArea("Please enter your name here:",1, 1);
@@ -185,6 +203,7 @@ public class BachGameJFrame extends JFrame {
         }
     }
 
+    // EFFECTS: Shows a pop up error message if user tries to load from an account that isn't created.
     private void notAnAccount() {
         JOptionPane error = new JOptionPane();
         error.showInternalMessageDialog(BachGameJFrame.this, "This is not an account.",

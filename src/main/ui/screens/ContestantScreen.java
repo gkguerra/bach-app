@@ -5,6 +5,9 @@ import ui.BachGameJFrame;
 import javax.swing.*;
 import java.awt.*;
 
+// This class references code from the LongFormProblemStartersRepository.
+// Link: https://github.students.cs.ubc.ca/CPSC210/LongFormProblemStarters.git
+
 public class ContestantScreen extends Screen {
     private static final String INIT_GREETING = "Here are all the contestants competing for Michelle's heart!";
     private JLabel greeting;
@@ -24,13 +27,14 @@ public class ContestantScreen extends Screen {
         displayContestants();
     }
 
-    //EFFECTS: creates greeting at top of console
+    //EFFECTS: Creates greeting at top of console
     private void placeGreeting() {
         greeting = new JLabel(INIT_GREETING, JLabel.CENTER);
         greeting.setSize(WIDTH, HEIGHT / 3);
         this.add(greeting);
     }
 
+    // EFFECTS: Displays the contestants.
     private void displayContestants() {
         GridLayout layout = new GridLayout(3,3);
         setLayout(layout);

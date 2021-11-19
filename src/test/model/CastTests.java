@@ -120,4 +120,11 @@ class CastTests {
         assertEquals(" Chad Smith Jack Bob", testCast.getAllCastNames());
     }
 
+    @Test
+    public void castToStringScore() {
+        testCast.addContestant(c1);
+        testCast.addContestant(c2);
+        assertEquals("Name: Test Cast, Score: 0", testCast.castToStringScore());
     }
+
+}

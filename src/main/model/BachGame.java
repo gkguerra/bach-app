@@ -1,16 +1,10 @@
 package model;
 
-import persistence.JsonReader;
-import persistence.JsonWriter;
-
 import java.util.ArrayList;
 import java.util.List;
 
+// The class BachGame, representing a BachGame with a list of casts
 public class BachGame {
-    private static String JSON_STORE;
-    private Cast cast;
-    private JsonWriter jsonWriter;
-    private JsonReader jsonReader;
 
     private List<Cast> casts;
 

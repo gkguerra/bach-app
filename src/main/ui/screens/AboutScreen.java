@@ -5,6 +5,11 @@ import ui.BachGameJFrame;
 import javax.swing.*;
 import java.awt.*;
 
+// This class and methods within this class references code and information from the following sources:
+// https://stackoverflow.com/questions/26420428/how-to-word-wrap-text-in-jlabel
+// Link: https://github.students.cs.ubc.ca/CPSC210/LongFormProblemStarters.git
+
+// This class AboutScreen extends screen, it displays a description of the Bachelorette game
 public class AboutScreen extends Screen {
 
     private static final String aboutDescription = "The Bachelorette is a reality tv dating show in which 30 "
@@ -14,7 +19,7 @@ public class AboutScreen extends Screen {
             + " rose are sent home. This continues until two men remain, and the bachelorette accepts a marriage "
             + " proposal from one of them. There is romance, drama, love, and lots of laughs!";
 
-
+    // EFFECTS: Constructs an AboutScreen with the BachGameJFrame as a controller
     public AboutScreen(BachGameJFrame controller) {
         super(controller);
 
@@ -24,8 +29,7 @@ public class AboutScreen extends Screen {
         layText();
     }
 
-    // https://stackoverflow.com/questions/26420428/how-to-word-wrap-text-in-jlabel
-    //EFFECTS: creates greeting at top of console
+    //EFFECTS: Creates the description
     private void layText() {
         JTextArea description = new JTextArea(20, 20);
         description.setEditable(false);

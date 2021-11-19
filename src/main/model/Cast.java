@@ -115,6 +115,7 @@ public class Cast implements Writable {
         return Collections.unmodifiableList(cast);
     }
 
+    // EFFECTS: Returns the name and score of a cast in a string form
     public String castToStringScore() {
         return "Name: " + getCastName() + ", Score: " + calculateCastScore();
     }

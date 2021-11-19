@@ -13,6 +13,7 @@ them. There is romance, drama, love, and lots of laughs!*
 number of roses received, etc.)
 - This application will allow users to create a "cast" of no more than three bachelors, and the users can monitor the 
 progress of their "cast" throughout the season.
+- Cast members will become "set" at a certain point throughout the season.
 - This application will calculate a score for each bachelor (based on how many roses and dates they have received).
 
 **Who will use it?**
@@ -33,13 +34,5 @@ to good use while developing this application :)
 - As a user, I want to be able to add contestants to my cast.
 - As a user, I want to be able to remove contestants from my cast.
 - As a user, I want to be able to quit the game.
-
-- As a user, I want to be prompted to save my to-do list to file when I quit.
+- As a user, I want to be prompted to save my cast to file when I quit.
 - As a user, I want to be able to load my cast from file.
-
-User stories to be implemented later on:
-- Users will be able to add and remove cast members from their cast for the first 3 weeks of the 10-week season.
-  After that period, their choices will be locked in.
-- Users will be able to view a ranking of all the different accounts and how well each Cast is doing.
-- Users will have a graphical interface to navigate the application.
-
