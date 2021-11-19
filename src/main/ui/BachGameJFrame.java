@@ -154,19 +154,24 @@ public class BachGameJFrame extends JFrame {
     private class LogInAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             JTextArea enterName = new JTextArea("Please enter your account name here:",1, 1);
-            JOptionPane total = new JOptionPane();
+            JOptionPane total = new JOptionPane("BachGameJFrame.this", JOptionPane.QUESTION_MESSAGE,
+                    JOptionPane.YES_OPTION);
             JPanel namePanel = new JPanel();
             namePanel.add(enterName, BorderLayout.SOUTH);
             namePanel.add(enterNameButton);
             total.add(namePanel);
             total.setIcon(logo);
             total.setBackground(PINK);
-            String userNameEntered = total.showInputDialog(BachGameJFrame.this, "Please enter your name here:");
-            BachGameJFrame.this.JSON_STORE = "./data/" + userNameEntered + ".json";
-            jsonWriter = new JsonWriter(JSON_STORE);
-            jsonReader = new JsonReader(JSON_STORE);
-            loadCast();
-            switchToMain();
+            String userNameEntered = total.showInputDialog(BachGameJFrame.this,
+                    "Please enter your name here:");
+
+            if (userNameEntered != null) {
+                BachGameJFrame.this.JSON_STORE = "./data/" + userNameEntered + ".json";
+                jsonWriter = new JsonWriter(JSON_STORE);
+                jsonReader = new JsonReader(JSON_STORE);
+                loadCast();
+                switchToMain();
+            }
         }
     }
 
@@ -182,7 +187,8 @@ public class BachGameJFrame extends JFrame {
             total.add(namePanel);
             total.setIcon(logo);
             total.setBackground(PINK);
-            String userNameEntered = total.showInputDialog(BachGameJFrame.this, "Please enter your name here:");
+            String userNameEntered = total.showInputDialog(BachGameJFrame.this,
+                    "Please enter your name here:");
             BachGameJFrame.this.JSON_STORE = "./data/" + userNameEntered + ".json";
             masterCast = new Cast(userNameEntered, 123);
             jsonWriter = new JsonWriter(JSON_STORE);

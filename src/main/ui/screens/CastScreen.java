@@ -186,7 +186,8 @@ public class CastScreen extends Screen {
         public void actionPerformed(ActionEvent e) {
             Cast masterCast = BachGameJFrame.getMasterCast();
             if (masterCast.getContestants() != null) {
-                castLabel.setText(masterCast.getAllCastNames());
+                castLabel.setText("Your cast: " + masterCast.getAllCastNames()
+                        + ", Your score: " + masterCast.calculateCastScore());
             } else {
                 castLabel.setText("Your cast is currently empty. Add some contestants now!");
             }
