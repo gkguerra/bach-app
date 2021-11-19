@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 
 // https://stackoverflow.com/questions/11428573/write-a-string-on-a-jpanel-centered/11428834
 // https://stackoverflow.com/questions/4123230/add-jbuttons-to-jpanel
+// https://docs.oracle.com/javase/tutorial/uiswing/layout/gridbag.html
+// https://www.tutorialspoint.com/swingexamples/add_border_to_panel.htm
 
 public class CastScreen extends Screen {
 
@@ -60,7 +62,7 @@ public class CastScreen extends Screen {
         constraints.gridwidth = 3;
         constraints.gridheight = 1;
         constraints.gridy = 0;
-        constraints.ipady = 0;
+        constraints.ipady = -10;
         constraints.weighty = 0;
         setBackground(PINK);
         this.add(top, constraints);
@@ -123,14 +125,16 @@ public class CastScreen extends Screen {
     private void placeCastPanel() {
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.gridx = 0;
+        constraints.gridx = 1;
         constraints.gridy = 3;
-        constraints.gridwidth = 3;
+        constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.ipady = 50;
         constraints.weighty = 0.16;
         constraints.anchor = GridBagConstraints.CENTER;
-        castPanel.add(castLabel);
+        castPanel.setBackground(PINK);
+        castPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+        castPanel.add(castLabel, CENTER_ALIGNMENT);
         this.add(castPanel, constraints);
     }
 
@@ -151,7 +155,6 @@ public class CastScreen extends Screen {
             } else {
                 rejectText = "Contestant not added. You have either already added them or your cast is full!";
                 castLabel.setText(rejectText);
-                // ADD BACK BUTTON OR BUILD A POP-UP TO DISPLAY THIS MESSAGE THAT CAN BE CLOSED
             }
 
             castPanel.repaint();
@@ -166,7 +169,6 @@ public class CastScreen extends Screen {
             } else {
                 castLabel.setText("Your cast is currently empty. Add some contestants now!");
             }
-
             castPanel.repaint();
         }
     }
@@ -181,9 +183,8 @@ public class CastScreen extends Screen {
                 castLabel.setText(removeThisContestant.getName() + " has been removed from your cast!");
             } else {
                 castLabel.setText(removeThisContestant.getName()
-                        + " is not in your cast and therefore could not be removed!");
+                        + " is not in your cast or is set and could not be removed!");
             }
-
             castPanel.repaint();
         }
     }
