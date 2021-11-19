@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Collections;
 
 // https://stackoverflow.com/questions/11428573/write-a-string-on-a-jpanel-centered/11428834
 // https://stackoverflow.com/questions/4123230/add-jbuttons-to-jpanel
@@ -17,7 +18,9 @@ public class CastScreen extends Screen {
     private static final String GREETING = "Here are all the current members of your cast:";
     private JLabel message;
     private ActionListener addAction = new AddAction();
-    JButton addButton = new JButton(("Add"));
+    private ViewAction viewAction = new ViewAction();
+    JButton addButton = new JButton(("ADD"));
+    JButton viewButton = new JButton(("VIEW CAST"));
 
     Contestant c1 = new Contestant("Alec", "North Charleston", 2, 0, "Eligible");
     Contestant c2 = new Contestant("Brandon", "Portland", 0, 0, "Eligible");
@@ -32,7 +35,7 @@ public class CastScreen extends Screen {
     JComboBox cb = new JComboBox((contestants));
 
     JPanel castPanel = new JPanel();
-    JLabel castLabel = new JLabel("Your cast is: ");
+    JLabel castLabel = new JLabel();
 
     public CastScreen(BachGameJFrame controller) {
         super(controller);
@@ -55,7 +58,9 @@ public class CastScreen extends Screen {
     private void placeButtons() {
         this.add(cb);
         this.add(addButton);
+        this.add(viewButton);
         addButton.addActionListener(addAction);
+        viewButton.addActionListener(viewAction);
     }
 
     private void placeCastPanel() {
@@ -70,24 +75,31 @@ public class CastScreen extends Screen {
     private class AddAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             Cast masterCast = BachGameJFrame.getMasterCast();
-            String contestantText;
-            String oldText;
             String newText;
             String rejectText;
             Contestant addThisContestant = (Contestant) cb.getSelectedItem();
-            oldText = castLabel.getText();
-            contestantText = masterCast.getAllCastNames();
-
-            castLabel.setText(oldText + contestantText);
 
             if (masterCast.size() < 3 && !masterCast.contains(addThisContestant)) {
                 masterCast.addContestant(addThisContestant);
-                newText = oldText + " " + addThisContestant.getName();
+                newText = addThisContestant.getName() + " has been added to your cast!";
                 castLabel.setText(newText);
             } else {
                 rejectText = "Contestant not added. You have either already added them or your cast is full!";
                 castLabel.setText(rejectText);
                 // ADD BACK BUTTON OR BUILD A POP-UP TO DISPLAY THIS MESSAGE THAT CAN BE CLOSED
+            }
+
+            castPanel.repaint();
+        }
+    }
+
+    private class ViewAction implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            Cast masterCast = BachGameJFrame.getMasterCast();
+            if (masterCast.getContestants() != null) {
+                castLabel.setText(masterCast.getAllCastNames());
+            } else {
+                castLabel.setText("Your cast is currently empty. Add some contestants now!");
             }
 
             castPanel.repaint();
