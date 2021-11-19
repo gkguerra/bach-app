@@ -8,15 +8,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Collections;
 
 // https://stackoverflow.com/questions/11428573/write-a-string-on-a-jpanel-centered/11428834
 // https://stackoverflow.com/questions/4123230/add-jbuttons-to-jpanel
 
 public class CastScreen extends Screen {
 
-    private static final String GREETING = "Here are all the current members of your cast:";
-    private JLabel message;
+    private static final Color PINK = new Color(255,192,203);
     private ActionListener addAction = new AddAction();
     private RemoveAction removeAction = new RemoveAction();
     private ViewAction viewAction = new ViewAction();
@@ -46,73 +44,80 @@ public class CastScreen extends Screen {
         GridBagLayout layout = new GridBagLayout();
         setLayout(layout);
 
-        headerConstraints();
-        comboBoxConstraints();
-        addButtonConstraints();
-        viewButtonConstraints();
-        removeButtonConstraints();
-
+        placeHeader();
+        placeComboBox();
+        placeViewButton();
+        placeAddButton();
+        placeRemoveButton();
         placeCastPanel();
     }
 
-    private void removeButtonConstraints() {
-        GridBagConstraints constraints5 = new GridBagConstraints();
-        constraints5.fill = GridBagConstraints.HORIZONTAL;
-        constraints5.gridx = 2;
-        constraints5.gridwidth = 1;
-        constraints5.gridheight = 1;
-        constraints5.gridy = 2;
-        constraints5.ipady = 40;
-        constraints5.weightx = 0.5;
-        removeButton.addActionListener(removeAction);
-        this.add(removeButton, constraints5);
-    }
-
-    private void viewButtonConstraints() {
-        GridBagConstraints constraints4 = new GridBagConstraints();
-        constraints4.fill = GridBagConstraints.HORIZONTAL;
-        constraints4.gridx = 0;
-        constraints4.gridwidth = 1;
-        constraints4.gridheight = 1;
-        constraints4.gridy = 2;
-        constraints4.weightx = 0.5;
-        constraints4.ipady = 40;
-        viewButton.addActionListener(viewAction);
-        this.add(viewButton, constraints4);
-    }
-
-    private void addButtonConstraints() {
-        GridBagConstraints constraints3 = new GridBagConstraints();
-        constraints3.fill = GridBagConstraints.HORIZONTAL;
-        constraints3.gridx = 1;
-        constraints3.gridwidth = 1;
-        constraints3.weightx = 0.5;
-        constraints3.gridheight = 1;
-        constraints3.gridy = 2;
-        constraints3.ipady = 40;
-        addButton.addActionListener(addAction);
-        this.add(addButton, constraints3);
-    }
-
-    private void comboBoxConstraints() {
-        GridBagConstraints constraints2 = new GridBagConstraints();
-        constraints2.fill = GridBagConstraints.HORIZONTAL;
-        constraints2.gridx = 0;
-        constraints2.gridwidth = 3;
-        constraints2.gridy = 1;
-        constraints2.gridheight = 1;
-        this.add(cb, constraints2);
-    }
-
-    private void headerConstraints() {
+    private void placeHeader() {
         GridBagConstraints constraints = new GridBagConstraints();
-        message = new JLabel(editCast, JLabel.CENTER);
+        JLabel top = new JLabel(editCast, JLabel.CENTER);
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.gridx = 0;
         constraints.gridwidth = 3;
         constraints.gridheight = 1;
         constraints.gridy = 0;
-        this.add(message, constraints);
+        constraints.ipady = 0;
+        constraints.weighty = 0;
+        setBackground(PINK);
+        this.add(top, constraints);
+    }
+
+    private void placeComboBox() {
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 1;
+        constraints.gridwidth = 1;
+        constraints.gridy = 1;
+        constraints.gridheight = 1;
+        constraints.ipady = 100;
+        constraints.weighty = 0.16;
+        this.add(cb, constraints);
+    }
+
+    private void placeViewButton() {
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 0;
+        constraints.gridwidth = 1;
+        constraints.gridheight = 1;
+        constraints.gridy = 2;
+        constraints.weightx = 0.5;
+        constraints.ipady = 40;
+        constraints.weighty = 0.16;
+        viewButton.addActionListener(viewAction);
+        this.add(viewButton, constraints);
+    }
+
+    private void placeAddButton() {
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 1;
+        constraints.gridwidth = 1;
+        constraints.weightx = 0.5;
+        constraints.gridheight = 1;
+        constraints.gridy = 2;
+        constraints.ipady = 40;
+        constraints.weighty = 0.16;
+        addButton.addActionListener(addAction);
+        this.add(addButton, constraints);
+    }
+
+    private void placeRemoveButton() {
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 2;
+        constraints.gridwidth = 1;
+        constraints.gridheight = 1;
+        constraints.gridy = 2;
+        constraints.ipady = 40;
+        constraints.weightx = 0.5;
+        constraints.weighty = 0.16;
+        removeButton.addActionListener(removeAction);
+        this.add(removeButton, constraints);
     }
 
     private void placeCastPanel() {
@@ -123,11 +128,11 @@ public class CastScreen extends Screen {
         constraints.gridwidth = 3;
         constraints.gridheight = 1;
         constraints.ipady = 50;
+        constraints.weighty = 0.16;
         constraints.anchor = GridBagConstraints.CENTER;
         castPanel.add(castLabel);
         this.add(castPanel, constraints);
     }
-
 
     //LEARN HOW TO CAST
     // https://stackoverflow.com/questions/24057273/how-to-access-an-objects-parent-object-in-java
