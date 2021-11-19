@@ -71,13 +71,8 @@ public class Cast implements Writable {
 
     public String getAllCastNames() {
         String names = "";
-        if (cast == null) {
-            names = "";
-        } else {
-            for (Contestant c : cast) {
-                names += " " + c.getName();
-            }
-
+        for (Contestant c: cast) {
+            names += " " + c.getName();
         }
         return names;
     }
