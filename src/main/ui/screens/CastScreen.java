@@ -2,7 +2,7 @@ package ui.screens;
 
 import model.Cast;
 import model.Contestant;
-import ui.StartJFrame;
+import ui.BachGameJFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +17,6 @@ public class CastScreen extends Screen {
     private static final String GREETING = "Here are all the current members of your cast:";
     private JLabel message;
     private ActionListener addAction = new AddAction();
-    Cast cast = new Cast("Gabbi", 123);
     JButton addButton = new JButton(("Add"));
 
     Contestant c1 = new Contestant("Alec", "North Charleston", 2, 0, "Eligible");
@@ -35,7 +34,7 @@ public class CastScreen extends Screen {
     JPanel castPanel = new JPanel();
     JLabel castLabel = new JLabel("Your cast is: ");
 
-    public CastScreen(StartJFrame controller) {
+    public CastScreen(BachGameJFrame controller) {
         super(controller);
 
         GridLayout layout = new GridLayout(5,5);
@@ -64,20 +63,25 @@ public class CastScreen extends Screen {
         this.add(castPanel);
     }
 
-    //LEARN HOW TO CAST TO OBJECTS
+
+    //LEARN HOW TO CAST
     // https://stackoverflow.com/questions/24057273/how-to-access-an-objects-parent-object-in-java
     // https://examples.javacodegeeks.com/desktop-java/swing/java-swing-tutorial-beginners/
     private class AddAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            Cast masterCast = BachGameJFrame.getMasterCast();
+            String contestantText;
             String oldText;
             String newText;
             String rejectText;
             Contestant addThisContestant = (Contestant) cb.getSelectedItem();
             oldText = castLabel.getText();
+            contestantText = masterCast.getAllCastNames();
 
-            if (cast.size() < 3 && !cast.contains(addThisContestant)) {
-                cast.addContestant(addThisContestant);
-                System.out.println(addThisContestant); // TO TEST OUTPUT
+            castLabel.setText(oldText + contestantText);
+
+            if (masterCast.size() < 3 && !masterCast.contains(addThisContestant)) {
+                masterCast.addContestant(addThisContestant);
                 newText = oldText + " " + addThisContestant.getName();
                 castLabel.setText(newText);
             } else {
@@ -89,4 +93,6 @@ public class CastScreen extends Screen {
             castPanel.repaint();
         }
     }
+
+
 }

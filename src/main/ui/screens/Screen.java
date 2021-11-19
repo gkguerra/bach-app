@@ -1,16 +1,18 @@
 package ui.screens;
 
-import ui.StartJFrame;
+import model.Cast;
+import ui.BachGameJFrame;
 
 import javax.swing.*;
 import java.awt.*;
 
 public abstract class Screen extends JPanel {
 
-    private final StartJFrame controller;
+    private final BachGameJFrame controller;
+    private Cast cast;
 
     //REQUIRES: SmartHomeUI controller that holds this tab
-    public Screen(StartJFrame controller) {
+    public Screen(BachGameJFrame controller) {
         this.controller = controller;
     }
 
@@ -24,7 +26,8 @@ public abstract class Screen extends JPanel {
     }
 
     //EFFECTS: returns the BachGameUI controller for this tab
-    public StartJFrame getController() {
+    public BachGameJFrame getController() {
         return controller;
     }
+
 }

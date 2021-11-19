@@ -69,6 +69,19 @@ public class Cast implements Writable {
         return overallScore;
     }
 
+    public String getAllCastNames() {
+        String names = "";
+        if (cast == null) {
+            names = "";
+        } else {
+            for (Contestant c : cast) {
+                names += " " + c.getName();
+            }
+
+        }
+        return names;
+    }
+
     // REQUIRES: A contestant.
     // EFFECTS: Returns true if contestant c is already in the cast, otherwise returns false.
     public boolean contains(Contestant c) {

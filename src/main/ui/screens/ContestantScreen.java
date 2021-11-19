@@ -1,6 +1,6 @@
 package ui.screens;
 
-import ui.StartJFrame;
+import ui.BachGameJFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +18,7 @@ public class ContestantScreen extends Screen {
     ImageIcon daniel = new ImageIcon("data/images/daniel.jpeg");
     ImageIcon edward = new ImageIcon("data/images/edward.jpeg");
 
-    public ContestantScreen(StartJFrame controller) {
+    public ContestantScreen(BachGameJFrame controller) {
         super(controller);
         placeGreeting();
         displayContestants();

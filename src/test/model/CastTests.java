@@ -113,4 +113,11 @@ class CastTests {
 
     }
 
+    @Test
+    public void getAllCastNamesTest() {
+        testCast.addContestant(c1);
+        testCast.addContestant(c2);
+        assertEquals(" Chad Smith Jack Bob", testCast.getAllCastNames());
+    }
+
     }
