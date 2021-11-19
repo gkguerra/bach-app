@@ -1,5 +1,7 @@
 package model;
 
+import ui.BachGameJFrame;
+
 import java.util.ArrayList;
 import java.util.List;
 

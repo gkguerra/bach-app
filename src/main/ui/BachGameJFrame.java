@@ -203,7 +203,7 @@ public class BachGameJFrame extends JFrame {
         }
     }
 
-    // EFFECTS: Shows a pop up error message if user tries to load from an account that isn't created.
+    // EFFECTS: Shows a pop-up error message if user tries to load from an account that isn't created.
     private void notAnAccount() {
         JOptionPane error = new JOptionPane();
         error.showInternalMessageDialog(BachGameJFrame.this, "This is not an account.",

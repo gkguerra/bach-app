@@ -257,7 +257,6 @@ public class BachGameConsole {
         File folder = new File("./data");
         File[] listOfFiles = folder.listFiles();
         List<Cast> listOfCasts = new ArrayList<>();
-        List<String> listOfCastRows = new ArrayList<>();
 
         for (File f : listOfFiles) {
             jsonReader = new JsonReader("./data/" + f.getName());

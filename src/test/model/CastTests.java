@@ -121,6 +121,11 @@ class CastTests {
     }
 
     @Test
+    public void getAllCastNamesTestNull() {
+        assertEquals("", testCast.getAllCastNames());
+    }
+
+    @Test
     public void castToStringScore() {
         testCast.addContestant(c1);
         testCast.addContestant(c2);

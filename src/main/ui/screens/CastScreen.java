@@ -195,7 +195,7 @@ public class CastScreen extends Screen {
     }
 
     // REQUIRES: The press of the remove button.
-    // MODIFIES: This, castLabel and castPanel
+    // MODIFIES: This, castLabel and castPanel.
     // EFFECTS: Removes a contestant and displays a message confirming the contestant is removed.
     private class RemoveAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
