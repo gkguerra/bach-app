@@ -27,9 +27,6 @@ public class BachGameJFrame extends JFrame {
     private static final int WIDTH = 1200;
     private static final int HEIGHT = 1000;
     private static final Color PINK = new Color(255,192,203);
-    private static final String GREETING = "Welcome to BachApp!";
-    private JLabel message;
-    private CastScreen castScreen;
     JPanel castScreen2 = new CastScreen(this);
 
     // TABBED PANE
@@ -56,6 +53,8 @@ public class BachGameJFrame extends JFrame {
     JButton signUpButton = new JButton("SIGN UP");
     JButton logInButton = new JButton("LOG IN");
     JButton enterNameButton = new JButton("ENTER");
+    ImageIcon bachLogo = new ImageIcon("data/images/bachlogo.png");
+    private JLabel image;
 
     // START THE APPLICATION
     public BachGameJFrame() {
@@ -69,15 +68,22 @@ public class BachGameJFrame extends JFrame {
         setVisible(true);
         GridLayout layout = new GridLayout(3,1);
         setLayout(layout);
-        addWelcomeMessage();
+        addImage();
         addEnterButtons();
+    }
+
+
+    private void addImage() {
+        image = new JLabel(bachLogo, JLabel.CENTER);
+        image.setSize(WIDTH, HEIGHT / 3);
+        this.add(image);
     }
 
     private void switchToMain() {
         this.getContentPane().remove(signUpButton);
         this.getContentPane().remove(logInButton);
         this.repaint();
-        this.getContentPane().remove(message);
+        this.remove(image);
         this.repaint();
         GridLayout layout = new GridLayout(1,1);
         setLayout(layout);
@@ -114,12 +120,6 @@ public class BachGameJFrame extends JFrame {
         }
     }
 
-    private void addWelcomeMessage() {
-        message = new JLabel(GREETING, JLabel.CENTER);
-        message.setSize(WIDTH, HEIGHT / 3);
-        this.add(message);
-    }
-
     private void centreOnScreen() {
         int width = Toolkit.getDefaultToolkit().getScreenSize().width;
         int height = Toolkit.getDefaultToolkit().getScreenSize().height;
@@ -127,8 +127,10 @@ public class BachGameJFrame extends JFrame {
     }
 
     public void addEnterButtons() {
+        logInButton.setSize(WIDTH, HEIGHT / 3);
         this.add(logInButton);
         logInButton.addActionListener(logInAction);
+        signUpButton.setSize(WIDTH, HEIGHT / 3);
         this.add(signUpButton);
         signUpButton.addActionListener(signUpAction);
     }
@@ -178,8 +180,15 @@ public class BachGameJFrame extends JFrame {
             jsonWriter.write(masterCast);
             jsonWriter.close();
         } catch (FileNotFoundException e) {
+            notAnAccount();
             System.out.println("Unable to write to file " + JSON_STORE);
         }
+    }
+
+    private void notAnAccount() {
+        JOptionPane error = new JOptionPane();
+        error.showInternalMessageDialog(BachGameJFrame.this, "This is not an account.",
+                "BachApp", JOptionPane.INFORMATION_MESSAGE);
     }
 
     // EFFECTS: Loads a Cast from JSON, throws an IOException if it cannot read the file
@@ -191,6 +200,7 @@ public class BachGameJFrame extends JFrame {
         }
     }
 
+    // EFFECTS: Returns the masterCast from this class.
     public static Cast getMasterCast() {
         return masterCast;
     }

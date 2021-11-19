@@ -1,0 +1,11 @@
+{
+    "name": "Jay",
+    "contestant": [{
+        "score": 3,
+        "hometown": "Miami Beach",
+        "name": "Casey",
+        "dates": 1,
+        "roses": 2,
+        "status": "Eligible"
+    }]
+}
