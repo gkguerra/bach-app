@@ -2,6 +2,8 @@ package ui;
 
 import model.BachGame;
 import model.Cast;
+import model.EventLog;
+import model.Event;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 import ui.screens.AboutScreen;
@@ -42,6 +44,7 @@ public class BachGameJFrame extends JFrame {
     private static String JSON_STORE;
     private static Cast masterCast;
     private BachGame bachGame;
+    private EventLog eventLog;
 
     // JSON
     private JsonWriter jsonWriter;
@@ -123,8 +126,10 @@ public class BachGameJFrame extends JFrame {
                     null);
             if (option == JOptionPane.YES_OPTION) {
                 saveCast();
+                printEvents();
                 System.exit(0);
             } else if (option == JOptionPane.NO_OPTION) {
+                printEvents();
                 System.exit(0);
             }
         }
@@ -228,6 +233,12 @@ public class BachGameJFrame extends JFrame {
     // EFFECTS: Returns the masterCast from this class.
     public static Cast getMasterCast() {
         return masterCast;
+    }
+
+    public void printEvents() {
+        for (Event e: EventLog.getInstance()) {
+            System.out.println(e);
+        }
     }
 
 }

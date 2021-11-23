@@ -1,0 +1,29 @@
+{
+    "name": "Alaa",
+    "contestant": [
+        {
+            "score": 3,
+            "hometown": "Columbia",
+            "name": "Clayton",
+            "dates": 1,
+            "roses": 2,
+            "status": "Eligible"
+        },
+        {
+            "score": 5,
+            "hometown": "Halifax",
+            "name": "Chris",
+            "dates": 3,
+            "roses": 2,
+            "status": "Eligible"
+        },
+        {
+            "score": 5,
+            "hometown": "Chicago",
+            "name": "Bryan",
+            "dates": 3,
+            "roses": 2,
+            "status": "Eligible"
+        }
+    ]
+}

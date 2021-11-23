@@ -1,0 +1,21 @@
+{
+    "name": "Phillip",
+    "contestant": [
+        {
+            "score": 3,
+            "hometown": "Miami Beach",
+            "name": "Casey",
+            "dates": 1,
+            "roses": 2,
+            "status": "Eligible"
+        },
+        {
+            "score": 3,
+            "hometown": "Los Angeles",
+            "name": "Edward",
+            "dates": 1,
+            "roses": 2,
+            "status": "Eligible"
+        }
+    ]
+}

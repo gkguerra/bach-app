@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class Cast implements Writable {
     private String name;                  //This is the name of the team
     private int id;                       //This is the ID of the team
     private ArrayList<Contestant> cast;   //The contestants in the cast
+    private EventLog eventLog;
 
     // Constructs an empty cast of contestants. We must name the cast and give it an account ID.
     public Cast(String castName, int accountID) {
@@ -45,6 +47,7 @@ public class Cast implements Writable {
     public void addContestant(Contestant c) {
         if ((!cast.contains(c)) && (cast.size() < 3)) {
             cast.add(c);
+            EventLog.getInstance().logEvent(new Event("Contestant added: " + c.getName()));
         }
     }
 
@@ -53,6 +56,7 @@ public class Cast implements Writable {
     // EFFECTS: Contestant c is removed from the Cast.
     public void remove(Contestant c) {
         cast.remove(c);
+        EventLog.getInstance().logEvent(new Event("Contestant removed: " + c.getName()));
     }
 
     // EFFECTS: Returns the number of contestants in the Cast.
