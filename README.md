@@ -36,3 +36,28 @@ to good use while developing this application :)
 - As a user, I want to be able to quit the game.
 - As a user, I want to be prompted to save my cast to file when I quit.
 - As a user, I want to be able to load my cast from file.
+
+## Phase 4: Task 3
+
+- Sample output:
+
+Tue Nov 23 16:39:55 PST 2021
+Contestant added: Brandon
+
+Tue Nov 23 16:39:58 PST 2021
+Contestant added: Bryan
+
+Tue Nov 23 16:40:01 PST 2021
+Contestant removed: Bryan
+
+Tue Nov 23 16:40:05 PST 2021
+Contestant added: Chris
+
+## Phase 4: Task 3
+
+If I had more time to work on this application, I would:
+
+- Make separate classes for each button and the action listener for each button 
+to reduce the coupling of the code in BachGameJFrame
+- Eliminate the "id" field from the Cast class
+- Abstract out the log-in and sign-in methods
