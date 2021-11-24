@@ -37,7 +37,7 @@ to good use while developing this application :)
 - As a user, I want to be prompted to save my cast to file when I quit.
 - As a user, I want to be able to load my cast from file.
 
-## Phase 4: Task 3
+## Phase 4: Task 2
 
 - Sample output:
 
