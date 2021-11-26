@@ -117,7 +117,7 @@ public class BachGameJFrame extends JFrame {
     }
 
     // MODIFIES: This.
-    // EFFECTS: Allows the user to save or not save their data when quitting the application.
+    // EFFECTS: User to saves or doesn't save their data when quitting the application and the event log is printed.
     private class SaveOrQuit extends WindowAdapter {
         public void windowClosing(WindowEvent e) {
             int option = JOptionPane.showOptionDialog(BachGameJFrame.this,

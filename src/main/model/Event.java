@@ -8,7 +8,7 @@ import model.Contestant;
 
 
 /**
- * Represents an alarm system event.
+ * Represents a BachGame event.
  */
 public class Event {
     private static final int HASH_CONSTANT = 13;

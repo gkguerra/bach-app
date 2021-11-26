@@ -59,5 +59,6 @@ If I had more time to work on this application, I would:
 
 - Make separate classes for each button and the action listener for each button 
 to reduce the coupling of the code in BachGameJFrame
-- Eliminate the "id" field from the Cast class
-- Abstract out the log-in and sign-in methods
+- Use the Singleton design pattern to ensure that each user only has one Cast
+- Eliminate the "id" field from the Cast class, it's useless
+- Abstract out the log-in and sign-in methods to reduce repeated code
