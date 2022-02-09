@@ -1,0 +1,21 @@
+{
+    "name": "My Cast",
+    "contestant": [
+        {
+            "score": 2,
+            "hometown": "LA",
+            "name": "Mark",
+            "dates": 1,
+            "roses": 1,
+            "status": "Eligible"
+        },
+        {
+            "score": 2,
+            "hometown": "NYC",
+            "name": "Twain",
+            "dates": 1,
+            "roses": 1,
+            "status": "Eligible"
+        }
+    ]
+}

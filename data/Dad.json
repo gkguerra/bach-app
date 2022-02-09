@@ -1,0 +1,29 @@
+{
+    "name": "Dad",
+    "contestant": [
+        {
+            "score": 3,
+            "hometown": "Los Angeles",
+            "name": "Edward",
+            "dates": 1,
+            "roses": 2,
+            "status": "Eligible"
+        },
+        {
+            "score": 3,
+            "hometown": "Columbia",
+            "name": "Clayton",
+            "dates": 1,
+            "roses": 2,
+            "status": "Eligible"
+        },
+        {
+            "score": 2,
+            "hometown": "North Charleston",
+            "name": "Alec",
+            "dates": 0,
+            "roses": 2,
+            "status": "Eligible"
+        }
+    ]
+}
