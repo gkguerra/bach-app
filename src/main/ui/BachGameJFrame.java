@@ -1,6 +1,5 @@
 package ui;
 
-import model.BachGame;
 import model.Cast;
 import model.EventLog;
 import model.Event;
@@ -43,7 +42,6 @@ public class BachGameJFrame extends JFrame {
     // PROGRAM
     private static String JSON_STORE;
     private static Cast masterCast;
-    private BachGame bachGame;
     private EventLog eventLog;
 
     // JSON
@@ -68,7 +66,6 @@ public class BachGameJFrame extends JFrame {
         this.setSize(WIDTH, HEIGHT);
         this.getContentPane().setBackground(PINK);
         this.addWindowListener(new BachGameJFrame.SaveOrQuit());
-        bachGame = new BachGame();
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         centreOnScreen();
         setVisible(true);

@@ -6,11 +6,6 @@ package ui;
 // The main class to run all of BachApp
 public class Main {
     public static void main(String[] args) {
-//        try {
-//            new BachGameJFrame();
-//        } catch (FileNotFoundException e) {
-//            System.out.println("Unable to run application: file not found.");
-//        }
         new BachGameJFrame();
     }
 }

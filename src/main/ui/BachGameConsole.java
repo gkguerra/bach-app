@@ -8,7 +8,10 @@ import persistence.JsonWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Scanner;
 
 // https://www.codebyamir.com/blog/sort-list-of-objects-by-field-java
 // https://stackoverflow.com/questions/11160952/goto-next-iteration-in-for-loop-in-java
@@ -93,17 +96,22 @@ public class BachGameConsole {
     }
 
     public void processSelection(String selection) {
-        if (selection.equals("1")) {
-            displayContestants();
-        } else if (selection.equals("2")) {
-            System.out.println("Here is a list of all the members of your cast!");
-            displayCast();
-            changeTeam();
-        } else if (selection.equals("3")) {
-            System.out.println("Here is the leaderboard! Look for your name!");
-            displayLeaderboard();
-        } else {
-            System.out.println("Selection is not valid.");
+        switch (selection) {
+            case "1":
+                displayContestants();
+                break;
+            case "2":
+                System.out.println("Here is a list of all the members of your cast!");
+                displayCast();
+                changeTeam();
+                break;
+            case "3":
+                System.out.println("Here is the leaderboard! Look for your name!");
+                displayLeaderboard();
+                break;
+            default:
+                System.out.println("Selection is not valid.");
+                break;
         }
     }
 
@@ -260,9 +268,7 @@ public class BachGameConsole {
 
         for (File f : listOfFiles) {
             jsonReader = new JsonReader("./data/" + f.getName());
-            if (f.getName().contains("test") || f.getName().contains("image")) {
-                continue;
-            } else {
+            if (!f.getName().contains("test") && !f.getName().contains("image")) {
                 try {
                     listOfCasts.add(jsonReader.read());
                 } catch (IOException e) {
